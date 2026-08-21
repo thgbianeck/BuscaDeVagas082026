@@ -1,8 +1,143 @@
+<!-- vscode-markdown-toc -->
+* 1. [📋 Visão Geral](#VisoGeral)
+* 2. [Distribuição por Categoria](#DistribuioporCategoria)
+* 3. [Pergunta 1 — Variáveis e Tipos Primitivos vs Wrappers](#Pergunta1VariveiseTiposPrimitivosvsWrappers)
+* 4. [Pergunta 2 — equals() e hashCode() em uma Classe de Domínio](#Pergunta2equalsehashCodeemumaClassedeDomnio)
+* 5. [Pergunta 3 — Null Pointer Exception em Produção](#Pergunta3NullPointerExceptionemProduo)
+* 6. [Pergunta 4 — Uso de ArrayList vs Array](#Pergunta4UsodeArrayListvsArray)
+* 7. [Pergunta 5 — Encapsulamento e Modificadores de Acesso](#Pergunta5EncapsulamentoeModificadoresdeAcesso)
+* 8. [Pergunta 6 — Loops e Estruturas de Controle](#Pergunta6LoopseEstruturasdeControle)
+* 9. [Pergunta 7 — Herança vs Composição](#Pergunta7HeranavsComposio)
+* 10. [Pergunta 8 — Checked vs Unchecked Exceptions](#Pergunta8CheckedvsUncheckedExceptions)
+* 11. [Pergunta 9 — Manipulação de Strings e StringBuilder](#Pergunta9ManipulaodeStringseStringBuilder)
+* 12. [Pergunta 10 — Polimorfismo na Prática](#Pergunta10PolimorfismonaPrtica)
+* 13. [📊 Resumo da Parte 1](#ResumodaParte1)
+* 14. [Pergunta 11 — Interfaces e Classes Abstratas](#Pergunta11InterfaceseClassesAbstratas)
+* 15. [Pergunta 12 — HashMap e Chaves Customizadas](#Pergunta12HashMapeChavesCustomizadas)
+* 16. [Pergunta 13 — Try-with-resources e Fechamento de Recursos](#Pergunta13Try-with-resourceseFechamentodeRecursos)
+* 17. [Pergunta 14 — Sobrecarga (Overloading) vs Sobrescrita (Overriding)](#Pergunta14SobrecargaOverloadingvsSobrescritaOverriding)
+* 18. [Pergunta 15 — Casting de Tipos e ClassCastException](#Pergunta15CastingdeTiposeClassCastException)
+* 19. [Pergunta 16 — Static vs Instance](#Pergunta16StaticvsInstance)
+* 20. [Pergunta 17 — Iteração e Remoção em Coleções](#Pergunta17IteraoeRemooemColees)
+* 21. [Pergunta 18 — Construtores e Inicialização](#Pergunta18ConstrutoreseInicializao)
+* 22. [Pergunta 19 — Java Streams API — Filtro e Mapeamento](#Pergunta19JavaStreamsAPIFiltroeMapeamento)
+* 23. [Pergunta 20 — Debugging: Stack Trace e Análise de Erros](#Pergunta20Debugging:StackTraceeAnlisedeErros)
+* 24. [📊 Resumo da Parte 2](#ResumodaParte2)
+* 25. [Pergunta 21 — Generics: Type Safety em Coleções](#Pergunta21Generics:TypeSafetyemColees)
+* 26. [Pergunta 22 — Optional como Alternativa a null](#Pergunta22OptionalcomoAlternativaanull)
+* 27. [Pergunta 23 — Comparable e Comparator](#Pergunta23ComparableeComparator)
+* 28. [Pergunta 24 — Enums com Atributos e Métodos](#Pergunta24EnumscomAtributoseMtodos)
+* 29. [Pergunta 25 — java.time: Manipulação de Datas](#Pergunta25java.time:ManipulaodeDatas)
+* 30. [Pergunta 26 — Imutabilidade de Objetos](#Pergunta26ImutabilidadedeObjetos)
+* 31. [Pergunta 27 — Lambdas e Functional Interfaces](#Pergunta27LambdaseFunctionalInterfaces)
+* 32. [Pergunta 28 — Tratamento de Exceções em Métodos Encadeados](#Pergunta28TratamentodeExceesemMtodosEncadeados)
+* 33. [Pergunta 29 — Equals, HashCode e o Contrato](#Pergunta29EqualsHashCodeeoContrato)
+* 34. [Pergunta 30 — Convenções de Naming e Clean Code](#Pergunta30ConvenesdeNamingeCleanCode)
+* 35. [📊 Resumo da Parte 3](#ResumodaParte3)
+* 36. [Pergunta 31 — Autoboxing e Unboxing](#Pergunta31AutoboxingeUnboxing)
+* 37. [Pergunta 32 — For-each vs For Tradicional com Índice](#Pergunta32For-eachvsForTradicionalcomndice)
+* 38. [Pergunta 33 — Set: Eliminando Duplicatas](#Pergunta33Set:EliminandoDuplicatas)
+* 39. [Pergunta 34 — toString() e Boas Práticas de Debug](#Pergunta34toStringeBoasPrticasdeDebug)
+* 40. [Pergunta 35 — Hierarquia de Exceções](#Pergunta35HierarquiadeExcees)
+* 41. [Pergunta 36 — Validação de Parâmetros e Fail-Fast](#Pergunta36ValidaodeParmetroseFail-Fast)
+* 42. [Pergunta 37 — Map: getOrDefault e putIfAbsent](#Pergunta37Map:getOrDefaulteputIfAbsent)
+* 43. [Pergunta 38 — Switch Statement: Boas Práticas e Fall-through](#Pergunta38SwitchStatement:BoasPrticaseFall-through)
+* 44. [Pergunta 39 — List vs Set: Escolhendo a Estrutura Correta](#Pergunta39ListvsSet:EscolhendoaEstruturaCorreta)
+* 45. [Pergunta 40 — Variáveis Final e Efectivamente Final](#Pergunta40VariveisFinaleEfectivamenteFinal)
+* 46. [📊 Resumo da Parte 4](#ResumodaParte4)
+* 47. [Pergunta 41 — Clonagem de Objetos: Cloneable e Cópia Defensiva](#Pergunta41ClonagemdeObjetos:CloneableeCpiaDefensiva)
+* 48. [Pergunta 42 — Inner Classes e Classes Aninhadas](#Pergunta42InnerClasseseClassesAninhadas)
+* 49. [Pergunta 43 — Formatação de Números e Moeda](#Pergunta43FormataodeNmeroseMoeda)
+* 50. [Pergunta 44 — Collections.unmodifiable e Imutabilidade de Coleções](#Pergunta44Collections.unmodifiableeImutabilidadedeColees)
+* 51. [Pergunta 45 — Varargs: Argumentos Variáveis](#Pergunta45Varargs:ArgumentosVariveis)
+* 52. [Pergunta 46 — var (Java 10+): Inferência de Tipo](#Pergunta46varJava10:InfernciadeTipo)
+* 53. [Pergunta 47 — Records (Java 14+): Modelagem de Dados](#Pergunta47RecordsJava14:ModelagemdeDados)
+* 54. [Pergunta 48 — Exceções em Construtores e Liberação de Recursos](#Pergunta48ExceesemConstrutoreseLiberaodeRecursos)
+* 55. [Pergunta 49 — Debugging: Exception Chaining e Cause](#Pergunta49Debugging:ExceptionChainingeCause)
+* 56. [Pergunta 50 — Métodos Default em Interfaces](#Pergunta50MtodosDefaultemInterfaces)
+* 57. [📊 Resumo da Parte 5](#ResumodaParte5)
+* 58. [Parte 6 — Perguntas 51 a 60](#Parte6Perguntas51a60)
+	* 58.1. [Pergunta 51 — Tratamento de exceção em método que pode falhar por múltiplas razões](#Pergunta51Tratamentodeexceoemmtodoquepodefalharpormltiplasrazes)
+	* 58.2. [Pergunta 52 — NullPointerException evitável em código de manipulação de listas](#Pergunta52NullPointerExceptionevitvelemcdigodemanipulaodelistas)
+	* 58.3. [Pergunta 53 — Escolha entre ArrayList e LinkedList em cenário real](#Pergunta53EscolhaentreArrayListeLinkedListemcenrioreal)
+	* 58.4. [Pergunta 54 — Uso correto de equals e hashCode em classe de domínio](#Pergunta54UsocorretodeequalsehashCodeemclassededomnio)
+	* 58.5. [Pergunta 55 — Vazamento de recurso com conexão de banco de dados não fechada](#Pergunta55Vazamentoderecursocomconexodebancodedadosnofechada)
+	* 58.6. [Pergunta 56 — Comparação de Strings com equals vs ==](#Pergunta56ComparaodeStringscomequalsvs)
+	* 58.7. [Pergunta 57 — Sobrescrita vs sobrecarga de método em classe de domínio](#Pergunta57Sobrescritavssobrecargademtodoemclassededomnio)
+	* 58.8. [Pergunta 58 — Loop infinito por erro de lógica com while](#Pergunta58Loopinfinitoporerrodelgicacomwhile)
+	* 58.9. [Pergunta 59 — Escolha entre array primitivo e coleção para armazenar notas](#Pergunta59Escolhaentrearrayprimitivoecoleoparaarmazenarnotas)
+	* 58.10. [Pergunta 60 — Uso de static em excesso e problemas de testabilidade](#Pergunta60Usodestaticemexcessoeproblemasdetestabilidade)
+* 59. [Parte 7 — Perguntas 61 a 70](#Parte7Perguntas61a70)
+	* 59.1. [Pergunta 61 — Tratamento de NullPointerException em código legado](#Pergunta61TratamentodeNullPointerExceptionemcdigolegado)
+	* 59.2. [Pergunta 62 — Diferença entre == e .equals() ao comparar strings](#Pergunta62Diferenaentree.equalsaocompararstrings)
+	* 59.3. [Pergunta 63 — Entendendo try-with-resources e gerenciamento de recursos](#Pergunta63Entendendotry-with-resourcesegerenciamentoderecursos)
+	* 59.4. [Pergunta 64 — Uso correto de Collections: ArrayList vs LinkedList](#Pergunta64UsocorretodeCollections:ArrayListvsLinkedList)
+	* 59.5. [Pergunta 65 — Entendendo o conceito de encapsulamento com exemplo prático](#Pergunta65Entendendooconceitodeencapsulamentocomexemploprtico)
+	* 59.6. [Pergunta 66 — Debugging: método que retorna resultado incorreto](#Pergunta66Debugging:mtodoqueretornaresultadoincorreto)
+	* 59.7. [Pergunta 67 — Compreensão de herança e sobrescrita de métodos](#Pergunta67Compreensodeheranaesobrescritademtodos)
+	* 59.8. [Pergunta 68 — Compreensão de StringBuilder vs concatenação de strings](#Pergunta68CompreensodeStringBuildervsconcatenaodestrings)
+	* 59.9. [Pergunta 69 — Uso de interfaces vs classes abstratas](#Pergunta69Usodeinterfacesvsclassesabstratas)
+	* 59.10. [Pergunta 70 — Tratamento de exceções verificadas vs não verificadas](#Pergunta70Tratamentodeexceesverificadasvsnoverificadas)
+	* 59.11. [Resumo da Parte 7](#ResumodaParte7)
+* 60. [Roteiro de Entrevista Técnica — Java (Júnior)](#RoteirodeEntrevistaTcnicaJavaJnior)
+	* 60.1. [Continuação — Perguntas 71 a 100](#ContinuaoPerguntas71a100)
+	* 60.2. [Pergunta 71 — Tratamento de NullPointerException em código legado](#Pergunta71TratamentodeNullPointerExceptionemcdigolegado)
+	* 60.3. [Pergunta 72 — Compreensão de equals() e hashCode()](#Pergunta72CompreensodeequalsehashCode)
+	* 60.4. [Pergunta 73 — Diferença entre == e equals() com Strings](#Pergunta73DiferenaentreeequalscomStrings)
+	* 60.5. [Pergunta 74 — Uso correto deCollections: List vs Set vs Map](#Pergunta74UsocorretodeCollections:ListvsSetvsMap)
+	* 60.6. [Pergunta 75 — Laço for-each vs for tradicional: modificação durante iteração](#Pergunta75Laofor-eachvsfortradicional:modificaoduranteiterao)
+	* 60.7. [Pergunta 76 — Compreensão de Exceções Checked vs Unchecked](#Pergunta76CompreensodeExceesCheckedvsUnchecked)
+	* 60.8. [Pergunta 77 — Uso de StringBuilder em concatenação de strings](#Pergunta77UsodeStringBuilderemconcatenaodestrings)
+	* 60.9. [Pergunta 78 — Compreensão de herança e polimorfismo](#Pergunta78Compreensodeheranaepolimorfismo)
+	* 60.10. [Pergunta 79 — Compreensão de modificadores de acesso](#Pergunta79Compreensodemodificadoresdeacesso)
+	* 60.11. [Pergunta 80 — Uso de interfaces vs classes abstratas](#Pergunta80Usodeinterfacesvsclassesabstratas)
+	* 60.12. [Pergunta 81 — Compreensão de Casting e ClassCastException](#Pergunta81CompreensodeCastingeClassCastException)
+	* 60.13. [Pergunta 82 — Entendendo o ciclo de vida de um objeto com Garbage Collector](#Pergunta82EntendendoociclodevidadeumobjetocomGarbageCollector)
+	* 60.14. [Pergunta 83 — Uso de try-with-resources para gerenciamento de recursos](#Pergunta83Usodetry-with-resourcesparagerenciamentoderecursos)
+	* 60.15. [Pergunta 84 — Entendendo autoboxing e unboxing](#Pergunta84Entendendoautoboxingeunboxing)
+	* 60.16. [Pergunta 85 — Debugging: NullPointerException sem stack trace informativo](#Pergunta85Debugging:NullPointerExceptionsemstacktraceinformativo)
+	* 60.17. [Pergunta 86 — Entendendo static vs instância](#Pergunta86Entendendostaticvsinstncia)
+	* 60.18. [Pergunta 87 — Uso correto de Generics com wildcards](#Pergunta87UsocorretodeGenericscomwildcards)
+	* 60.19. [Pergunta 88 — Manipulação de datas com java.time](#Pergunta88Manipulaodedatascomjava.time)
+	* 60.20. [Pergunta 89 — Entendendo o método toString()](#Pergunta89EntendendoomtodotoString)
+	* 60.21. [Pergunta 90 — Entendendo varargs](#Pergunta90Entendendovarargs)
+	* 60.22. [Pergunta 91 — Entendendo ordenação com Comparable e Comparator](#Pergunta91EntendendoordenaocomComparableeComparator)
+	* 60.23. [Pergunta 92 — Uso de switch expression e pattern matching](#Pergunta92Usodeswitchexpressionepatternmatching)
+	* 60.24. [Pergunta 93 — Entendendo imutabilidade de objetos](#Pergunta93Entendendoimutabilidadedeobjetos)
+	* 60.25. [Pergunta 94 — Uso de Map para agrupamento e contagem](#Pergunta94UsodeMapparaagrupamentoecontagem)
+	* 60.26. [Pergunta 95 — Entendendo o conceito de this e super](#Pergunta95Entendendooconceitodethisesuper)
+	* 60.27. [Pergunta 96 — Entendendo Exceptions em herança](#Pergunta96EntendendoExceptionsemherana)
+	* 60.28. [Pergunta 97 — Uso de enum em vez de constantes](#Pergunta97Usodeenumemvezdeconstantes)
+	* 60.29. [Pergunta 98 — Entendendo passagem por valor vs referência](#Pergunta98Entendendopassagemporvalorvsreferncia)
+	* 60.30. [Pergunta 99 — Entendendo fianl em variáveis, parâmetros e classes](#Pergunta99Entendendofianlemvariveisparmetroseclasses)
+	* 60.31. [Pergunta 100 — Debugging: identificar erro lógico em código](#Pergunta100Debugging:identificarerrolgicoemcdigo)
+* 61. [Resumo da Entrevista](#ResumodaEntrevista)
+	* 61.1. [Distribuição por categoria](#Distribuioporcategoria)
+	* 61.2. [Principais competências avaliadas](#Principaiscompetnciasavaliadas)
+* 62. [Matriz de Competências## Recomendações para o Entrevistador](#MatrizdeCompetnciasRecomendaesparaoEntrevistador)
+	* 62.1. [Como conduzir a entrevista](#Comoconduziraentrevista)
+	* 62.2. [Como fazer perguntas de aprofundamento](#Comofazerperguntasdeaprofundamento)
+	* 62.3. [Como diferenciar insegurança de falta de conhecimento](#Comodiferenciarinseguranadefaltadeconhecimento)
+	* 62.4. [Como avaliar respostas parcialmente corretas](#Comoavaliarrespostasparcialmentecorretas)
+	* 62.5. [Como evitar vieses na avaliação](#Comoevitarviesesnaavaliao)
+	* 62.6. [Como registrar evidências objetivas](#Comoregistrarevidnciasobjetivas)
+* 63. [Recomendações para o Candidato](#RecomendaesparaoCandidato)
+	* 63.1. [Como estruturar o raciocínio](#Comoestruturaroraciocnio)
+	* 63.2. [Como explicar decisões técnicas](#Comoexplicardecisestcnicas)
+	* 63.3. [Como utilizar exemplos reais](#Comoutilizarexemplosreais)
+	* 63.4. [Como admitir que não sabe algo](#Comoadmitirquenosabealgo)
+	* 63.5. [Como discutir trade-offs](#Comodiscutirtrade-offs)
+	* 63.6. [Como responder perguntas práticas e de arquitetura](#Comoresponderperguntasprticasedearquitetura)
 
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
 
 Vou coletar as informações necessárias para montar o roteiro de entrevista técnica completo.# Roteiro de Entrevista Técnica — Java (Nível Júnior)
 
-## 📋 Visão Geral
+##  1. <a name='VisoGeral'></a>📋 Visão Geral
 
 | Item | Detalhe |
 |---|---|
@@ -14,7 +149,7 @@ Vou coletar as informações necessárias para montar o roteiro de entrevista t�
 
 ---
 
-## Distribuição por Categoria
+##  2. <a name='DistribuioporCategoria'></a>Distribuição por Categoria
 
 | Categoria | Quantidade aproximada |
 |---|---|
@@ -30,739 +165,10 @@ Vou coletar as informações necessárias para montar o roteiro de entrevista t�
 
 # PARTE 1 — Perguntas 1 a 10
 
----
-
-## Pergunta 1 — Variáveis e Tipos Primitivos vs Wrappers
-
-**Nível:** Júnior  
-**Categoria:** Fundamentos da linguagem
-
-**Pergunta do entrevistador:**  
-Você está trabalhando em um sistema de cadastro de clientes e precisa armazenar a idade de um usuário. Um colega de equipe sugere usar `int` para a idade, mas você vê que em outro módulo o sistema usa `Integer`. Em um cenário onde a idade pode não ter sido informada pelo usuário (valor nulo), qual tipo você escolheria e por quê? Explique a diferença entre os dois.
-
-**O que essa pergunta avalia:**  
-Conhecimento sobre a diferença entre tipos primitivos e wrappers (classes encapsuladoras), compreensão de quando valores nulos são possíveis, e capacidade de tomar uma decisão técnica simples baseada em um requisito de negócio.
-
-**Resposta esperada:**  
-Deve-se usar `Integer` quando a idade pode ser nula, pois tipos primitivos como `int` não podem assumir valor `null` — seu valor padrão é `0`. `Integer` é uma classe wrapper que encapsula um valor `int` em um objeto, permitindo representar a ausência de valor com `null`. Se a idade não foi informada pelo usuário, usar `int` mascara o problema, pois `0` é um valor válido (um bebê recém-nascido tem 0 anos), tornando impossível distinguir entre "idade não informada" e "idade zero".
-
-**Explicação didática:**  
-Pense em `int` como uma caixa física que sempre tem algo dentro — se você não colocar nada, ela vem com `0` de fábrica. Já `Integer` é como um envelope: pode conter um número dentro ou estar vazio (`null`). Quando o usuário não preenche a idade no formulário, o envelope chega vazio, e você consegue identificar isso. Com a caixa `int`, você nunca saberia se o `0` significa "não preenchido" ou "zero anos".
-
-**Exemplo prático:**  
-Em uma API REST que recebe o JSON `{"nome": "João", "idade": null}`, se o campo `idade` for mapeado como `int`, o valor chegará como `0`, perdendo a informação de que o usuário não informou a idade. Com `Integer`, o valor chegará como `null`, permitindo validar e solicitar o preenchimento.
-
-**Exemplo de código:**  
-```java
-public class Cliente {
-    private String nome;
-    private Integer idade; // Permite null quando não informado
-    
-    public Integer getIdade() {
-        return idade;
-    }
-    
-    public void setIdade(Integer idade) {
-        this.idade = idade;
-    }
-    
-    // Método utilitário para verificar se a idade foi informada
-    public boolean hasIdadeInformada() {
-        return idade != null;
-    }
-}
-
-// Cenário de uso
-Cliente cliente = new Cliente();
-cliente.setNome("João");
-// Idade não informada — getIdade() retorna null, não 0
-if (!cliente.hasIdadeInformada()) {
-    System.out.println("Por favor, informe a idade do cliente.");
-}
-```
-
-**Como o candidato deve responder:**  
-- Começar identificando que o requisito "idade pode ser nula" é o ponto-chave da decisão.
-- Explicar a diferença entre `int` (primitivo, valor padrão `0`, não aceita `null`) e `Integer` (wrapper, objeto, aceita `null`).
-- Mencionar o risco de confundir `0` com "não informado".
-- Trazer um exemplo concreto (como o de uma API REST ou formulário).
-- Evitar responder apenas "usaria Integer porque aceita null" sem justificar o porquê.
-
-**Resposta fraca ou incompleta:**  
-"Usaria `Integer` porque é melhor que `int`." — Não explica a diferença entre os dois, não menciona o cenário de valor nulo, nem o risco de confundir `0` com ausência de valor.
-
-**Critérios de avaliação:**
-
-| Nota | Descrição |
-|---|---|
-| 0 | Não sabe responder ou apresenta informações incorretas |
-| 1 | Demonstra conhecimento muito superficial |
-| 2 | Conhece parte do conceito, mas apresenta lacunas importantes |
-| 3 | Responde corretamente aos fundamentos |
-| 4 | Demonstra bom domínio prático e apresenta exemplos |
-| 5 | Responde com profundidade, apresenta trade-offs, boas práticas e experiência real |
-
-**Perguntas de aprofundamento:**
-1. O que acontece se você tentar chamar um método em uma variável `Integer` que está com valor `null`?
-2. Em quais situações o uso de wrappers pode impactar o desempenho da aplicação?
-3. Como o autoboxing e unboxing funcionam na prática com esses tipos?
 
 ---
 
-## Pergunta 2 — equals() e hashCode() em uma Classe de Domínio
-
-**Nível:** Júnior  
-**Categoria:** Orientação a Objetos
-
-**Pergunta do entrevistador:**  
-Imagine que você criou uma classe `Produto` com os atributos `id`, `nome` e `preco`. O sistema precisa verificar se dois objetos `Produto` representam o mesmo item. Quando você coloca esses objetos em um `HashSet`, percebe que produtos duplicados estão sendo inseridos. O que pode estar acontecendo e como você resolve esse problema?
-
-**O que essa pergunta avalia:**  
-Compreensão de como o método `equals()` define igualdade entre objetos, como o `hashCode()` é usado por coleções baseadas em hash, e a relação contratoual entre os dois métodos.
-
-**Resposta esperada:**  
-Por padrão, a classe `Object` implementa `equals()` comparando referências de memória (endereço), não o conteúdo dos atributos. Assim, dois objetos `Produto` com os mesmos dados são considerados diferentes. O `HashSet` usa `hashCode()` para agrupar elementos em "buckets" e depois `equals()` para confirmar igualdade. Se ambos não forem sobrescritos, cada objeto terá um `hashCode` único baseado no endereço de memória, e `equals()` também comparará referências, permitindo duplicatas.
-
-A solução é sobrescrever `equals()` e `hashCode()` na classe `Produto`, definindo igualdade com base no `id` (ou nos campos que representam a identidade do produto). É obrigatório que dois objetos considerados iguais por `equals()` tenham o mesmo `hashCode`.
-
-**Explicação didática:**  
-Imagine o `HashSet` como um armário com várias gavetas numeradas. Quando você insere um objeto, o Java calcula o `hashCode()` para decidir em qual gaveta guardá-lo. Depois, usa `equals()` para verificar se já existe um objeto igual naquela gaveta. Se você não sobrescrever `hashCode()`, cada objeto vai para uma gaveta diferente (baseada no endereço de memória), então o Java nunca chega a comparar com `equals()`, e duplicatas passam despercebidas.
-
-**Exemplo prático:**  
-Em um e-commerce, ao adicionar produtos a um carrinho, você precisa garantir que o mesmo produto (mesmo `id`) não seja inserido duas vezes. Sem `equals()` e `hashCode()` corretos, o `HashSet` permitirá duplicatas silenciosamente.
-
-**Exemplo de código:**  
-```java
-import java.util.Objects;
-
-public class Produto {
-    private Long id;
-    private String nome;
-    private Double preco;
-    
-    public Produto(Long id, String nome, Double preco) {
-        this.id = id;
-        this.nome = nome;
-        this.preco = preco;
-    }
-    
-    // Dois produtos são iguais se têm o mesmo id
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;           // Mesma referência
-        if (o == null || getClass() != o.getClass()) return false;
-        Produto produto = (Produto) o;
-        return Objects.equals(id, produto.id);
-    }
-    
-    // hashCode baseado no mesmo campo usado em equals()
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-}
-```
-
-**Como o candidato deve responder:**  
-- Identificar o problema: `equals()` e `hashCode()` padrão usam referência de memória.
-- Explicar como o `HashSet` funciona internamente (hashCode + equals).
-- Apresentar a solução: sobrescrever ambos os métodos.
-- Mencionar a regra do contrato: objetos iguais devem ter o mesmo hashCode.
-- Recomendar o uso de `Objects.equals()` e `Objects.hash()` para evitar NullPointerException.
-- Evitar sobrescrever apenas `equals()` sem `hashCode()`.
-
-**Resposta fraca ou incompleta:**  
-"Sobrescrever o `equals()` para comparar os atributos." — Falta mencionar o `hashCode()` e a relação entre os dois. Sem sobrescrever `hashCode()`, o `HashSet` ainda não funcionará corretamente.
-
-**Critérios de avaliação:**
-
-| Nota | Descrição |
-|---|---|
-| 0 | Não sabe responder ou apresenta informações incorretas |
-| 1 | Demonstra conhecimento muito superficial |
-| 2 | Conhece parte do conceito, mas apresenta lacunas importantes |
-| 3 | Responde corretamente aos fundamentos |
-| 4 | Demonstra bom domínio prático e apresenta exemplos |
-| 5 | Responde com profundidade, apresenta trade-offs, boas práticas e experiência real |
-
-**Perguntas de aprofundamento:**
-1. O que pode acontecer se você sobrescrever `equals()` mas não `hashCode()`?
-2. Por que é importante que dois objetos iguais tenham o mesmo `hashCode`, mas objetos diferentes podem ter o mesmo `hashCode`?
-3. Quais campos você usaria para definir igualdade de um `Produto` — apenas `id` ou também `nome` e `preco`? Por quê?
-
----
-
-## Pergunta 3 — Null Pointer Exception em Produção
-
-**Nível:** Júnior  
-**Categoria:** Tratamento de Exceções
-
-**Pergunta do entrevistador:**  
-Em produção, um usuário relatou que o sistema exibiu uma tela de erro ao tentar visualizar os detalhes de um pedido. Você verificou os logs e encontrou um `NullPointerException`. O erro ocorre na linha `pedido.getCliente().getNome()`. Como você investigaria e resolveria esse problema?
-
-**O que essa pergunta avalia:**  
-Capacidade de diagnosticar um `NullPointerException`, identificar encadeamento de chamadas nulas, aplicar tratamentos defensivos e conhecer boas práticas como uso de `Optional`.
-
-**Resposta esperada:**  
-O `NullPointerException` provavelmente ocorre porque `pedido.getCliente()` retorna `null` — ou seja, o pedido não tem um cliente associado. A tentativa de chamar `.getNome()` em `null` dispara a exceção.
-
-Para resolver, é necessário:
-1. **Investigar a causa raiz:** verificar por que o cliente está `null` — pode ser um dado inconsistente no banco, uma consulta que não carregou a relação, ou um pedido ainda não finalizado.
-2. **Tratamento defensivo imediato:** verificar se `getCliente()` retorna `null` antes de acessar `.getNome()`.
-3. **Solução com `Optional` (Java 8+):** alterar `getCliente()` para retornar `Optional<Cliente>`, forçando quem chama o método a lidar com a possibilidade de ausência.
-4. **Mensagem amigável:** exibir uma mensagem adequada ao usuário em vez de uma tela de erro.
-
-**Explicação didática:**  
-Pense no encadeamento `pedido.getCliente().getNome()` como abrir uma matriosca (boneca russa). Você abre a primeira boneca (pedido) e encontra outra dentro (cliente). Mas se a boneca "cliente" não estiver lá — ou seja, for `null` —, não há nada para abrir, e o programa quebra. O tratamento defensivo é como verificar se há uma boneca dentro antes de tentar abri-la.
-
-**Exemplo prático:**  
-Um sistema de e-commerce onde um pedido foi criado mas o cliente ainda não foi vinculado (ex: pedido via API de integração). Ao tentar mostrar o nome do cliente na tela, o sistema quebra.
-
-**Exemplo de código:**  
-```java
-// ❌ Código problemático — sujeito a NPE
-String nomeCliente = pedido.getCliente().getNome();
-
-// ✅ Solução 1: Verificação tradicional
-String nomeCliente = "Cliente não vinculado";
-if (pedido.getCliente() != null) {
-    nomeCliente = pedido.getCliente().getNome();
-}
-
-// ✅ Solução 2: Usando Optional (recomendado, Java 8+)
-public class Pedido {
-    private Cliente cliente;
-    
-    public Optional<Cliente> getCliente() {
-        return Optional.ofNullable(cliente);
-    }
-}
-
-// No chamador:
-String nomeCliente = pedido.getCliente()
-    .map(Cliente::getNome)
-    .orElse("Cliente não vinculado");
-```
-
-**Como o candidato deve responder:**  
-- Identificar que o NPE ocorre porque `getCliente()` provavelmente retorna `null`.
-- Explicar o conceito de encadeamento de chamadas e onde o `null` pode estar.
-- Propor tratamento defensivo (verificação com `if` ou uso de `Optional`).
-- Mencionar a importância de investigar a causa raiz (por que o cliente é `null`?).
-- Sugerir exibir uma mensagem amigável ao usuário.
-- Evitar apenas sugerir `try-catch` sem investigar a causa.
-
-**Resposta fraca ou incompleta:**  
-"Colocar um try-catch em volta da linha." — Isso mascara o problema sem resolvê-lo. Não investiga a causa raiz, não propõe tratamento defensivo adequado, e o erro pode voltar em outras partes do código.
-
-**Critérios de avaliação:**
-
-| Nota | Descrição |
-|---|---|
-| 0 | Não sabe responder ou apresenta informações incorretas |
-| 1 | Demonstra conhecimento muito superficial |
-| 2 | Conhece parte do conceito, mas apresenta lacunas importantes |
-| 3 | Responde corretamente aos fundamentos |
-| 4 | Demonstra bom domínio prático e apresenta exemplos |
-| 5 | Responde com profundidade, apresenta trade-offs, boas práticas e experiência real |
-
-**Perguntas de aprofundamento:**
-1. Qual a diferença entre tratar o sintoma (try-catch) e resolver a causa raiz?
-2. Em quais outros pontos do sistema esse mesmo problema poderia ocorrer?
-3. Como você garante que dados obrigatórios não cheguem nulos desde a entrada do sistema?
-
----
-
-## Pergunta 4 — Uso de ArrayList vs Array
-
-**Nível:** Júnior  
-**Categoria:** Coleções e Estruturas de Dados
-
-**Pergunta do entrevistador:**  
-Você precisa armazenar uma lista de nomes de funcionários de um departamento. O departamento pode contratar e demitir pessoas ao longo do tempo. Um colega sugere usar um array simples (`String[]`), outro sugere `ArrayList<String>`. Qual você escolheria e por quê? Que impactos práticos essa decisão traz?
-
-**O que essa pergunta avalia:**  
-Compreensão da diferença entre arrays e coleções dinâmicas, conhecimento das limitações dos arrays (tamanho fixo), e capacidade de escolher a estrutura de dados adequada para um cenário real.
-
-**Resposta esperada:**  
-A escolha correta é `ArrayList<String>`, pois o cenário exige uma estrutura dinâmica — o número de funcionários muda ao longo do tempo. Arrays em Java têm tamanho fixo após a criação: não é possível adicionar ou remover elementos dinamicamente sem criar um novo array e copiar os elementos. O `ArrayList` encapsula essa complexidade, crescendo e diminuindo automaticamente conforme elementos são adicionados ou removidos.
-
-**Explicação didática:**  
-Pense em um array como uma fileira de cadeiras numeradas em um teatro: você reserva 10 cadeiras, e se chegar a 11ª pessoa, não há cadeira — você precisaria realocar todo o teatro para uma sala maior. O `ArrayList` é como um auditório flexível: sempre que precisa, traz mais cadeiras automaticamente, e quando alguém sai, remove a cadeira sem deixar buracos.
-
-**Exemplo prático:**  
-Em um sistema de RH, o usuário cadastra um novo funcionário no departamento. Com `String[]`, seria necessário criar um novo array com tamanho `n+1`, copiar todos os elementos do array anterior e adicionar o novo. Com `ArrayList`, basta chamar `lista.add(nome)`.
-
-**Exemplo de código:**  
-```java
-import java.util.ArrayList;
-import java.util.List;
-
-// ❌ Com array — gerenciamento manual de tamanho
-String[] funcionarios = new String[3];
-funcionarios[0] = "Ana";
-funcionarios[1] = "Bruno";
-funcionarios[2] = "Carla";
-// Para adicionar "Daniel", é necessário criar um novo array
-String[] novoArray = new String[4];
-for (int i = 0; i < funcionarios.length; i++) {
-    novoArray[i] = funcionarios[i];
-}
-novoArray[3] = "Daniel";
-funcionarios = novoArray;
-
-// ✅ Com ArrayList — adição e remoção são simples
-List<String> listaFuncionarios = new ArrayList<>();
-listaFuncionarios.add("Ana");
-listaFuncionarios.add("Bruno");
-listaFuncionarios.add("Carla");
-listaFuncionarios.add("Daniel"); // Cresce automaticamente
-listaFuncionarios.remove("Bruno"); // Remove facilmente
-```
-
-**Como o candidato deve responder:**  
-- Identificar que o requisito chave é o tamanho dinâmico.
-- Explicar que arrays têm tamanho fixo e `ArrayList` é dinâmico.
-- Mencionar que `ArrayList` abstrai a complexidade de redimensionamento.
-- Trazer o exemplo prático de adicionar/remover funcionários.
-- Mencionar que arrays ainda são úteis quando o tamanho é conhecido e fixo.
-- Evitar dizer que "ArrayList é sempre melhor" sem considerar o contexto.
-
-**Resposta fraca ou incompleta:**  
-"Usaria `ArrayList` porque é mais fácil." — Não explica por que é mais fácil, nem menciona a limitação de tamanho fixo dos arrays, nem o cenário de adicionar/remover funcionários.
-
-**Critérios de avaliação:**
-
-| Nota | Descrição |
-|---|---|
-| 0 | Não sabe responder ou apresenta informações incorretas |
-| 1 | Demonstra conhecimento muito superficial |
-| 2 | Conhece parte do conceito, mas apresenta lacunas importantes |
-| 3 | Responde corretamente aos fundamentos |
-| 4 | Demonstra bom domínio prático e apresenta exemplos |
-| 5 | Responde com profundidade, apresenta trade-offs, boas práticas e experiência real |
-
-**Perguntas de aprofundamento:**
-1. Como o `ArrayList` aumenta de tamanho internamente quando atinge a capacidade máxima?
-2. Quando faria sentido usar um array simples em vez de `ArrayList`?
-3. Qual a diferença entre `ArrayList` e `LinkedList`? Em que cenário cada um seria mais adequado?
-
----
-
-## Pergunta 5 — Encapsulamento e Modificadores de Acesso
-
-**Nível:** Júnior  
-**Categoria:** Orientação a Objetos
-
-**Pergunta do entrevistador:**  
-Você está revisando o código de um colega e encontra uma classe `ContaBancaria` onde todos os atributos estão como `public`: `public double saldo;`. Em um cenário real de uma aplicação bancária, quais problemas isso pode causar e como você orientaria seu colega a corrigir?
-
-**O que essa pergunta avalia:**  
-Compreensão do princípio de encapsulamento, conhecimento dos modificadores de acesso (`public`, `private`, `protected`, default), e capacidade de identificar problemas de design orientado a objetos.
-
-**Resposta esperada:**  
-Com `saldo` como `public`, qualquer classe pode modificar o valor diretamente, sem validação. Isso permite operações como `conta.saldo = -1000;` ou `conta.saldo = 0;` sem passar por regras de negócio. Em uma aplicação bancária, isso representa uma falha crítica de integridade de dados.
-
-A correção envolve:
-1. Tornar o atributo `private`.
-2. Expor acesso controlado via getters e setters.
-3. Implementar validações nos setters ou em métodos de negócio como `depositar()` e `sacar()`.
-4. Garantir que o saldo só seja alterado através de operações válidas.
-
-**Explicação didática:**  
-Imagine que o saldo da conta é o cofre de um banco. Se o cofre estiver na rua (`public`), qualquer pessoa pode abrir e mexer no dinheiro. Se estiver dentro do banco com uma porta restrita (`private`), só é possível acessar através do caixa (`getSaldo()`) ou realizar operações pelos procedimentos corretos (`depositar()`, `sacar()`), que verificam regras como saldo suficiente e valores positivos.
-
-**Exemplo prático:**  
-Sem encapsulamento, um desenvolvedor desavisado poderia fazer `conta.saldo = 1000000;` em qualquer parte do sistema, criando dinheiro do nada. Com encapsulamento, toda alteração de saldo passa por métodos que aplicam regras de auditoria, log e validação.
-
-**Exemplo de código:**  
-```java
-public class ContaBancaria {
-    private double saldo;       // Acesso restrito
-    private String titular;
-    
-    public ContaBancaria(String titular, double saldoInicial) {
-        this.titular = titular;
-        this.saldo = saldoInicial;
-    }
-    
-    // Leitura controlada
-    public double getSaldo() {
-        return saldo;
-    }
-    
-    // Escrita controlada — apenas por operações de negócio
-    public void depositar(double valor) {
-        if (valor <= 0) {
-            throw new IllegalArgumentException("Valor do depósito deve ser positivo");
-        }
-        this.saldo += valor;
-        // Aqui poderiam ser registrados logs, auditoria, etc.
-    }
-    
-    public void sacar(double valor) {
-        if (valor <= 0) {
-            throw new IllegalArgumentException("Valor do saque deve ser positivo");
-        }
-        if (valor > saldo) {
-            throw new IllegalStateException("Saldo insuficiente");
-        }
-        this.saldo -= valor;
-    }
-}
-```
-
-**Como o candidato deve responder:**  
-- Explicar o conceito de encapsulamento: proteger dados internos da classe.
-- Identificar os riscos de `public`: acesso irrestrito, sem validação.
-- Propor a solução: `private` + getters/setters com validação ou métodos de negócio.
-- Mencionar que nem todo atributo precisa de setter — alguns devem ser apenas leitura.
-- Trazer o exemplo do saldo bancário como caso crítico.
-- Evitar dizer apenas "use private" sem explicar o porquê.
-
-**Resposta fraca ou incompleta:**  
-"Deveria usar `private` em vez de `public`." — Correto, mas não explica o porquê nem menciona validações, métodos de negócio, ou os riscos de dados inconsistentes.
-
-**Critérios de avaliação:**
-
-| Nota | Descrição |
-|---|---|
-| 0 | Não sabe responder ou apresenta informações incorretas |
-| 1 | Demonstra conhecimento muito superficial |
-| 2 | Conhece parte do conceito, mas apresenta lacunas importantes |
-| 3 | Responde corretamente aos fundamentos |
-| 4 | Demonstra bom domínio prático e apresenta exemplos |
-| 5 | Responde com profundidade, apresenta trade-offs, boas práticas e experiência real |
-
-**Perguntas de aprofundamento:**
-1. Um atributo `protected` é acessível por quais classes?
-2. Em que situação faria sentido usar o modificador default (package-private)?
-3. Como o encapsulamento facilita a manutenção e evolução do código a longo prazo?
-
----
-
-## Pergunta 6 — Loops e Estruturas de Controle
-
-**Nível:** Júnior  
-**Categoria:** Controle de Fluxo e Lógica
-
-**Pergunta do entrevistador:**  
-Você precisa processar uma lista de pedidos e aplicar um desconto de 10% apenas nos pedidos com valor acima de `R$ 100,00`. Além disso, precisa parar o processamento se encontrar um pedido marcado como "cancelado". Como você implementaria essa lógica e qual estrutura de repetição escolheria?
-
-**O que essa pergunta avalia:**  
-Conhecimento de estruturas de controle (`for`, `for-each`, `while`), capacidade de combinar condicionais com loops, uso de `break` e `continue`, e raciocínio lógico aplicado a um cenário de negócio.
-
-**Resposta esperada:**  
-A estrutura mais adequada é o `for-each` (enhanced for), pois a iteração é sobre uma coleção de pedidos sem necessidade de índice. Dentro do loop:
-1. Verificar se o pedido está cancelado — se sim, usar `break` para interromper o loop.
-2. Verificar se o valor do pedido é maior que `R$ 100,00` — se sim, aplicar o desconto.
-3. Pedidos com valor menor que `R$ 100,00` devem ser pulados com `continue` (se não houver outra ação) ou simplesmente não receber o desconto (se outras ações forem necessárias).
-
-**Explicação didática:**  
-Imagine que você é um inspetor de qualidade em uma linha de montagem. Você olha cada produto (pedido) que passa pela esteira (loop for-each). Se encontrar um produto com etiqueta "cancelado", você desliga a esteira (`break`). Se o produto custa menos de `R$ 100`, você não aplica o selo de desconto, mas deixa o produto seguir (`continue` ou apenas não aplica). Se custa mais de `R$ 100`, você coloca o selo de desconto.
-
-**Exemplo prático:**  
-Um sistema de e-commerce processa pedidos em lote antes do envio. O desconto promocional deve ser aplicado automaticamente, mas se houver um pedido cancelado no lote, o processamento deve parar para investigação manual.
-
-**Exemplo de código:**  
-```java
-import java.util.List;
-
-public class ProcessadorDePedidos {
-    
-    public void processarPedidos(List<Pedido> pedidos) {
-        for (Pedido pedido : pedidos) {
-            // Se encontrar um pedido cancelado, interrompe o processamento
-            if (pedido.isCancelado()) {
-                System.out.println("Pedido cancelado encontrado: " + pedido.getId());
-                break;
-            }
-            
-            // Aplica desconto apenas para pedidos acima de R$ 100
-            if (pedido.getValor() > 100.0) {
-                double valorComDesconto = pedido.getValor() * 0.90;
-                pedido.setValor(valorComDesconto);
-                System.out.println("Desconto aplicado ao pedido " + pedido.getId());
-            }
-            // Pedidos abaixo de R$ 100 continuam sem desconto
-        }
-    }
-}
-
-class Pedido {
-    private Long id;
-    private double valor;
-    private boolean cancelado;
-    
-    // Getters e setters omitidos para brevidade
-    public Long getId() { return id; }
-    public double getValor() { return valor; }
-    public void setValor(double valor) { this.valor = valor; }
-    public boolean isCancelado() { return cancelado; }
-}
-```
-
-**Como o candidato deve responder:**  
-- Escolher `for-each` e justificar (iteração sobre coleção sem necessidade de índice).
-- Explicar o uso de `break` para parar ao encontrar pedido cancelado.
-- Explicar a condicional para aplicar o desconto.
-- Mencionar que `continue` seria útil se houvesse outras operações no loop que devessem ser puladas.
-- Trazer o exemplo prático do processamento de pedidos.
-- Evitar usar `while` sem justificar, ou usar índices desnecessários com `for` tradicional.
-
-**Resposta fraca ou incompleta:**  
-"Usaria um `for` para percorrer a lista e um `if` para aplicar o desconto." — Não menciona o `break` para o pedido cancelado, não justifica a escolha do tipo de loop, nem considera o cenário de interrupção.
-
-**Critérios de avaliação:**
-
-| Nota | Descrição |
-|---|---|
-| 0 | Não sabe responder ou apresenta informações incorretas |
-| 1 | Demonstra conhecimento muito superficial |
-| 2 | Conhece parte do conceito, mas apresenta lacunas importantes |
-| 3 | Responde corretamente aos fundamentos |
-| 4 | Demonstra bom domínio prático e apresenta exemplos |
-| 5 | Responde com profundidade, apresenta trade-offs, boas práticas e experiência real |
-
-**Perguntas de aprofundamento:**
-1. Qual a diferença entre `break` e `continue`? Dê um exemplo de uso de cada um.
-2. Como você faria se precisasse pular os pedidos cancelados em vez de parar o processamento?
-3. Em quais situações o `while` seria mais adequado que o `for`?
-
----
-
-## Pergunta 7 — Herança vs Composição
-
-**Nível:** Júnior  
-**Categoria:** Orientação a Objetos
-
-**Pergunta do entrevistador:**  
-Você está modelando um sistema de funcionários. Inicialmente, criou uma classe `Funcionario` com atributos como `nome`, `salario` e métodos como `calcularBonus()`. Agora precisa adicionar `Gerente`, `Desenvolvedor` e `Estagiario`. Um colega sugere que todos herdem de `Funcionario`. Você concorda? Existe alguma situação em que composição seria uma alternativa melhor?
-
-**O que essa pergunta avalia:**  
-Compreensão de herança e seus limites, conhecimento do princípio "favorecer composição sobre herança", e capacidade de identificar quando a herança cria acoplamento excessivo ou hierarquias rígidas.
-
-**Resposta esperada:**  
-A herança faz sentido neste caso, pois `Gerente`, `Desenvolvedor` e `Estagiario` são tipos de `Funcionario` — existe uma relação "é-um" (is-a). Todos compartilham atributos como `nome` e `salario`, e o polimorfismo permite tratar todos como `Funcionario` quando necessário. Cada subclasse pode sobrescrever `calcularBonus()` com regras específicas.
-
-No entanto, a composição deve ser preferida quando:
-- Não existe uma relação "é-um", mas sim "tem-um" (has-a).
-- A hierarquia ficaria muito profunda e rígida.
-- Comportamentos precisam ser reutilizados entre classes que não compartilham hierarquia.
-- Há necessidade de trocar comportamentos em tempo de execução.
-
-Um exemplo onde composição seria melhor: se diferentes funcionários têm diferentes formas de pagamento (PIX, boleto, depósito), em vez de criar `FuncionarioPIX`, `FuncionarioBoleto`, é melhor ter uma interface `FormaPagamento` e injetá-la como composição.
-
-**Explicação didática:**  
-Pense na herança como uma árvore genealógica — um `Gerente` **é** um `Funcionario`, assim como um filho é uma pessoa. Já a composição é como montar um computador: você não herda de uma placa de vídeo ou um disco rígido, você os **tem** como componentes. Se a placa queima, você troca sem mudar o computador inteiro. A herança é permanente e rígida; a composição é flexível e intercambiável.
-
-**Exemplo prático:**  
-Em um sistema de RH, `Gerente` herda de `Funcionario` (herança apropriada). Mas se `Gerente` também precisa enviar notificações, em vez de herdar de uma classe `Notificador`, é melhor ter um objeto `Notificador` como atributo de `Gerente` (composição), pois amanhã pode ser necessário trocar o notificador (e-mail para Slack) sem alterar a hierarquia de classes.
-
-**Exemplo de código:**  
-```java
-// HERANÇA — relação "é-um" faz sentido
-public abstract class Funcionario {
-    private String nome;
-    private double salario;
-    
-    public abstract double calcularBonus();
-    
-    public String getNome() { return nome; }
-    public double getSalario() { return salario; }
-    public void setSalario(double salario) { this.salario = salario; }
-}
-
-public class Gerente extends Funcionario {
-    @Override
-    public double calcularBonus() {
-        return getSalario() * 0.20; // 20% para gerentes
-    }
-}
-
-public class Desenvolvedor extends Funcionario {
-    @Override
-    public double calcularBonus() {
-        return getSalario() * 0.10; // 10% para devs
-    }
-}
-
-// COMPOSIÇÃO — comportamento reutilizável e intercambiável
-public interface FormaPagamento {
-    void pagar(Funcionario funcionario);
-}
-
-public class PagamentoPIX implements FormaPagamento {
-    @Override
-    public void pagar(Funcionario funcionario) {
-        System.out.println("Pagando via PIX para " + funcionario.getNome());
-    }
-}
-
-public class PagamentoBoleto implements FormaPagamento {
-    @Override
-    public void pagar(Funcionario funcionario) {
-        System.out.println("Gerando boleto para " + funcionario.getNome());
-    }
-}
-
-// Folha de pagamento usa composição — pode trocar a forma de pagamento
-public class FolhaPagamento {
-    private FormaPagamento formaPagamento; // Composição
-    
-    public FolhaPagamento(FormaPagamento formaPagamento) {
-        this.formaPagamento = formaPagamento;
-    }
-    
-    public void processarPagamento(Funcionario funcionario) {
-        double total = funcionario.getSalario() + funcionario.calcularBonus();
-        formaPagamento.pagar(funcionario);
-    }
-}
-```
-
-**Como o candidato deve responder:**  
-- Concordar que a herança faz sentido para este caso (relação é-um).
-- Explicar o conceito "favorecer composição sobre herança".
-- Dar um exemplo de quando composição seria melhor (relação tem-um).
-- Mencionar que herança cria acoplamento forte entre classes.
-- Trazer um exemplo prático onde a troca de comportamento justifica composição.
-- Evitar dizer que "herança é sempre errada" ou "sempre use composição".
-
-**Resposta fraca ou incompleta:**  
-"Sim, devem herdar de `Funcionario`." — Correto, mas não explica os critérios para a escolha, não menciona composição como alternativa, nem identifica quando a herança se torna problemática.
-
-**Critérios de avaliação:**
-
-| Nota | Descrição |
-|---|---|
-| 0 | Não sabe responder ou apresenta informações incorretas |
-| 1 | Demonstra conhecimento muito superficial |
-| 2 | Conhece parte do conceito, mas apresenta lacunas importantes |
-| 3 | Responde corretamente aos fundamentos |
-| 4 | Demonstra bom domínio prático e apresenta exemplos |
-| 5 | Responde com profundidade, apresenta trade-offs, boas práticas e experiência real |
-
-**Perguntas de aprofundamento:**
-1. O que é acoplamento e por que herança excessiva é prejudicial?
-2. Como o princípio de substituição de Liskov (LSP) se aplica a este cenário?
-3. Se amanhã surgir um `EstagiarioRemoto` que também é um `Estudante`, como você modelaria sem herança múltipla?
-
----
-
-## Pergunta 8 — Checked vs Unchecked Exceptions
-
-**Nível:** Júnior  
-**Categoria:** Tratamento de Exceções
-
-**Pergunta do entrevistador:**  
-Você está desenvolvendo um método que lê um arquivo de configuração do sistema. O método pode encontrar situações como "arquivo não encontrado" ou "formato inválido". Um colega diz para usar `RuntimeException` para tudo, pois é mais simples. Outro diz para usar exceptions checked. Como você decidiria entre checked e unchecked exceptions nesse cenário?
-
-**O que essa pergunta avalia:**  
-Compreensão da diferença entre checked e unchecked exceptions, conhecimento de quando cada tipo é apropriado, e capacidade de tomar decisões de design baseadas em recuperação de erros.
-
-**Resposta esperada:**  
-A distinção principal é:
-- **Checked exceptions** (`IOException`, `SQLException`): o compilador força o tratamento (try-catch ou declaração `throws`). Usadas quando o erro é recuperável e o chamador tem condições razoáveis de se recuperar.
-- **Unchecked exceptions** (`RuntimeException` e subclasses como `NullPointerException`, `IllegalArgumentException`): o compilador não força o tratamento. Usadas para erros de programação (bugs) ou situações que geralmente não podem ser recuperadas em runtime.
-
-Para o cenário de leitura de arquivo:
-- "Arquivo não encontrado" é uma `FileNotFoundException` (checked) — faz sentido, pois o chamador pode tentar outro caminho, criar o arquivo, ou usar valores padrão.
-- "Formato inválido" pode ser uma `IllegalConfigurationException` (unchecked, se for um erro de configuração do ambiente) ou checked, se for uma condição esperada que o chamador deve tratar.
-
-Usar `RuntimeException` para tudo é uma má prática pois remove a obrigatoriedade de tratamento, fazendo com que erros recuperáveis passem despercebidos.
-
-**Explicação didática:**  
-Checked exceptions são como uma portaria que exige crachá: você é obrigado a mostrar que está lidando com a situação antes de entrar. Unchecked exceptions são como alarmes de incêndio: não dá para prever, não dá para "tratar no momento", e geralmente indicam que algo está errado que precisa ser corrigido no código, não tratado em runtime.
-
-**Exemplo prático:**  
-Um sistema que lê um arquivo `config.properties` na inicialização. Se o arquivo não existir, o sistema pode usar configurações padrão (recuperável — checked). Mas se o arquivo existir com um JSON malformado onde se esperava properties, isso é um erro de deployment que provavelmente deve abortar a inicialização (unchecked).
-
-**Exemplo de código:**  
-```java
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Properties;
-
-public class Configurador {
-    
-    // Checked:FileNotFoundException — o chamador DEVE tratar
-    public Properties carregarConfiguracoes(String caminho) 
-            throws IOException {
-        Properties props = new Properties();
-        
-        try (FileInputStream fis = new FileInputStream(caminho)) {
-            props.load(fis);
-        } catch (FileNotFoundException e) {
-            // Arquivo não encontrado — pode ser recuperável
-            // Relança como checked para o chamador decidir
-            throw e;
-        } catch (IOException e) {
-            throw new IOException("Erro ao ler arquivo de configuração: " 
-                + caminho, e);
-        }
-        
-        // Validação — erro de programação/configuração (unchecked)
-        String portaStr = props.getProperty("server.port");
-        if (portaStr == null) {
-            throw new IllegalArgumentException(
-                "Propriedade obrigatória 'server.port' não encontrada em " + caminho
-            );
-        }
-        
-        return props;
-    }
-}
-
-// No chamador — o compilador FORÇA o tratamento da checked exception
-public class Aplicacao {
-    public void iniciar() {
-        Configurador config = new Configurador();
-        try {
-            Properties props = config.carregarConfiguracoes("/app/config.properties");
-            System.out.println("Configurações carregadas com sucesso");
-        } catch (FileNotFoundException e) {
-            System.out.println("Arquivo não encontrado. Usando configurações padrão.");
-            // Pode usar defaults — recuperável
-        } catch (IOException e) {
-            System.out.println("Erro de IO: " + e.getMessage());
-            // Pode logar e tentar novamente, ou abortar
-        }
-    }
-}
-```
-
-**Como o candidato deve responder:**  
-- Explicar a diferença entre checked (compilador força tratamento) e unchecked (não força).
-- Definir o critério: erros recuperáveis → checked; erros de programação → unchecked.
-- Aplicar ao cenário: arquivo não encontrado → checked (recuperável); formato inválido → depende do contexto.
-- Mencionar que usar `RuntimeException` para tudo é uma má prática.
-- Trazer exemplo prático de código.
-- Evitar dizer que "checked são melhores" ou "unchecked são melhores" sem contexto.
-
-**Resposta fraca ou incompleta:**  
-"Usaria try-catch para tratar tudo." — Não diferencia checked de unchecked, não justifica a escolha, e não explica o critério de recuperação.
-
-**Critérios de avaliação:**
-
-| Nota | Descrição |
-|---|---|
-| 0 | Não sabe responder ou apresenta informações incorretas |
-| 1 | Demonstra conhecimento muito superficial |
-| 2 | Conhece parte do conceito, mas apresenta lacunas importantes |
-| 3 | Responde corretamente aos fundamentos |
-| 4 | Demonstra bom domínio prático e apresenta exemplos |
-| 5 | Responde com profundidade, apresenta trade-offs, boas práticas e experiência real |
-
-**Perguntas de aprofundamento:**
-1. Por que muitas bibliotecas modernas preferem unchecked exceptions?
-2. O que é o padrão "fail fast" e como ele se relaciona com exceções?
-3. Como você criaria uma exception customizada? Quais informações ela deveria conter?
-
----
-
-## Pergunta 9 — Manipulação de Strings e StringBuilder
+##  11. <a name='Pergunta9ManipulaodeStringseStringBuilder'></a>Pergunta 9 — Manipulação de Strings e StringBuilder
 
 **Nível:** Júnior  
 **Categoria:** Manipulação de Strings e Datas
@@ -852,7 +258,7 @@ public String gerarRelatorioOtimizado(List<Cliente> clientes) {
 
 ---
 
-## Pergunta 10 — Polimorfismo na Prática
+##  12. <a name='Pergunta10PolimorfismonaPrtica'></a>Pergunta 10 — Polimorfismo na Prática
 
 **Nível:** Júnior  
 **Categoria:** Orientação a Objetos
@@ -980,7 +386,7 @@ public class Main {
 
 ---
 
-## 📊 Resumo da Parte 1
+##  13. <a name='ResumodaParte1'></a>📊 Resumo da Parte 1
 
 | Item | Detalhe |
 |---|---|
@@ -998,7 +404,7 @@ Diga **"continuar"** e eu gero a Parte 2 com as perguntas 11 a 20.
 
 ---
 
-## Pergunta 11 — Interfaces e Classes Abstratas
+##  14. <a name='Pergunta11InterfaceseClassesAbstratas'></a>Pergunta 11 — Interfaces e Classes Abstratas
 
 **Nível:** Júnior  
 **Categoria:** Orientação a Objetos
@@ -1141,7 +547,7 @@ public class ProcessadorPagamento {
 
 ---
 
-## Pergunta 12 — HashMap e Chaves Customizadas
+##  15. <a name='Pergunta12HashMapeChavesCustomizadas'></a>Pergunta 12 — HashMap e Chaves Customizadas
 
 **Nível:** Júnior  
 **Categoria:** Coleções e Estruturas de Dados
@@ -1256,7 +662,7 @@ cacheCorreto.get(prod2); // Retorna "Notebook Dell 16GB RAM" ✅
 
 ---
 
-## Pergunta 13 — Try-with-resources e Fechamento de Recursos
+##  16. <a name='Pergunta13Try-with-resourceseFechamentodeRecursos'></a>Pergunta 13 — Try-with-resources e Fechamento de Recursos
 
 **Nível:** Júnior  
 **Categoria:** Tratamento de Exceções
@@ -1363,7 +769,7 @@ public void copiarArquivo(String origem, String destino) {
 
 ---
 
-## Pergunta 14 — Sobrecarga (Overloading) vs Sobrescrita (Overriding)
+##  17. <a name='Pergunta14SobrecargaOverloadingvsSobrescritaOverriding'></a>Pergunta 14 — Sobrecarga (Overloading) vs Sobrescrita (Overriding)
 
 **Nível:** Júnior  
 **Categoria:** Orientação a Objetos
@@ -1460,7 +866,7 @@ public class Main {
 
 ---
 
-## Pergunta 15 — Casting de Tipos e ClassCastException
+##  18. <a name='Pergunta15CastingdeTiposeClassCastException'></a>Pergunta 15 — Casting de Tipos e ClassCastException
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos da linguagem
@@ -1594,7 +1000,7 @@ public void listarEquipes(List<Funcionario> funcionarios) {
 
 ---
 
-## Pergunta 16 — Static vs Instance
+##  19. <a name='Pergunta16StaticvsInstance'></a>Pergunta 16 — Static vs Instance
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos da linguagem
@@ -1713,7 +1119,7 @@ public class CadastroService {
 
 ---
 
-## Pergunta 17 — Iteração e Remoção em Coleções
+##  20. <a name='Pergunta17IteraoeRemooemColees'></a>Pergunta 17 — Iteração e Remoção em Coleções
 
 **Nível:** Júnior  
 **Categoria:** Coleções e Estruturas de Dados
@@ -1816,7 +1222,7 @@ List<Pedido> pedidosAtivos = pedidos.stream()
 
 ---
 
-## Pergunta 18 — Construtores e Inicialização
+##  21. <a name='Pergunta18ConstrutoreseInicializao'></a>Pergunta 18 — Construtores e Inicialização
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos da linguagem
@@ -1939,7 +1345,7 @@ Usuario u3 = Usuario.deImportacao("Maria", "maria@test.com",
 
 ---
 
-## Pergunta 19 — Java Streams API — Filtro e Mapeamento
+##  22. <a name='Pergunta19JavaStreamsAPIFiltroeMapeamento'></a>Pergunta 19 — Java Streams API — Filtro e Mapeamento
 
 **Nível:** Júnior  
 **Categoria:** Coleções e Estruturas de Dados
@@ -2070,7 +1476,7 @@ List<Produto> produtos = Arrays.asList(
 
 ---
 
-## Pergunta 20 — Debugging: Stack Trace e Análise de Erros
+##  23. <a name='Pergunta20Debugging:StackTraceeAnlisedeErros'></a>Pergunta 20 — Debugging: Stack Trace e Análise de Erros
 
 **Nível:** Júnior  
 **Categoria:** Boas Práticas e Debugging
@@ -2187,7 +1593,7 @@ private String gerarLinha(Pedido pedido) {
 
 ---
 
-## 📊 Resumo da Parte 2
+##  24. <a name='ResumodaParte2'></a>📊 Resumo da Parte 2
 
 | Item | Detalhe |
 |---|---|
@@ -2205,7 +1611,7 @@ Diga **"continuar"** e eu gero a Parte 3 com as perguntas 21 a 30.
 
 ---
 
-## Pergunta 21 — Generics: Type Safety em Coleções
+##  25. <a name='Pergunta21Generics:TypeSafetyemColees'></a>Pergunta 21 — Generics: Type Safety em Coleções
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos da linguagem
@@ -2311,7 +1717,7 @@ public class ProcessadorMisto {
 
 ---
 
-## Pergunta 22 — Optional como Alternativa a null
+##  26. <a name='Pergunta22OptionalcomoAlternativaanull'></a>Pergunta 22 — Optional como Alternativa a null
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos da linguagem
@@ -2427,7 +1833,7 @@ public class Cliente {
 
 ---
 
-## Pergunta 23 — Comparable e Comparator
+##  27. <a name='Pergunta23ComparableeComparator'></a>Pergunta 23 — Comparable e Comparator
 
 **Nível:** Júnior  
 **Categoria:** Coleções e Estruturas de Dados
@@ -2558,7 +1964,7 @@ pedidos.sort(Comparator.comparingDouble(Pedido::getValor));
 
 ---
 
-## Pergunta 24 — Enums com Atributos e Métodos
+##  28. <a name='Pergunta24EnumscomAtributoseMtodos'></a>Pergunta 24 — Enums com Atributos e Métodos
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos da linguagem
@@ -2705,7 +2111,7 @@ public enum StatusPedido {
 
 ---
 
-## Pergunta 25 — java.time: Manipulação de Datas
+##  29. <a name='Pergunta25java.time:ManipulaodeDatas'></a>Pergunta 25 — java.time: Manipulação de Datas
 
 **Nível:** Júnior  
 **Categoria:** Manipulação de Strings e Datas
@@ -2836,7 +2242,7 @@ System.out.println("Dias até consulta: " + agendamento.diasAteConsulta());
 
 ---
 
-## Pergunta 26 — Imutabilidade de Objetos
+##  30. <a name='Pergunta26ImutabilidadedeObjetos'></a>Pergunta 26 — Imutabilidade de Objetos
 
 **Nível:** Júnior  
 **Categoria:** Boas Práticas
@@ -2969,7 +2375,7 @@ System.out.println(novaConfig);      // timeout=60 (nova instância)
 
 ---
 
-## Pergunta 27 — Lambdas e Functional Interfaces
+##  31. <a name='Pergunta27LambdaseFunctionalInterfaces'></a>Pergunta 27 — Lambdas e Functional Interfaces
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos da linguagem
@@ -3112,7 +2518,7 @@ Validador<String> emailValido = naoVazio.e(temArroba);
 
 ---
 
-## Pergunta 28 — Tratamento de Exceções em Métodos Encadeados
+##  32. <a name='Pergunta28TratamentodeExceesemMtodosEncadeados'></a>Pergunta 28 — Tratamento de Exceções em Métodos Encadeados
 
 **Nível:** Júnior  
 **Categoria:** Tratamento de Exceções
@@ -3281,7 +2687,7 @@ class ResultadoProcessamento {
 
 ---
 
-## Pergunta 29 — Equals, HashCode e o Contrato
+##  33. <a name='Pergunta29EqualsHashCodeeoContrato'></a>Pergunta 29 — Equals, HashCode e o Contrato
 
 **Nível:** Júnior  
 **Categoria:** Orientação a Objetos
@@ -3411,7 +2817,7 @@ System.out.println(setCorreto.size()); // 1 ✅ — detectou duplicata
 
 ---
 
-## Pergunta 30 — Convenções de Naming e Clean Code
+##  34. <a name='Pergunta30ConvenesdeNamingeCleanCode'></a>Pergunta 30 — Convenções de Naming e Clean Code
 
 **Nível:** Júnior  
 **Categoria:** Boas Práticas
@@ -3565,7 +2971,7 @@ List<String> comNulos = filtrarRemovendoNulos(nomes, false);
 
 ---
 
-## 📊 Resumo da Parte 3
+##  35. <a name='ResumodaParte3'></a>📊 Resumo da Parte 3
 
 | Item | Detalhe |
 |---|---|
@@ -3583,7 +2989,7 @@ Diga **"continuar"** e eu gero a Parte 4 com as perguntas 31 a 40.
 
 ---
 
-## Pergunta 31 — Autoboxing e Unboxing
+##  36. <a name='Pergunta31AutoboxingeUnboxing'></a>Pergunta 31 — Autoboxing e Unboxing
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos da linguagem
@@ -3705,7 +3111,7 @@ public class AutoboxingDemo {
 
 ---
 
-## Pergunta 32 — For-each vs For Tradicional com Índice
+##  37. <a name='Pergunta32For-eachvsForTradicionalcomndice'></a>Pergunta 32 — For-each vs For Tradicional com Índice
 
 **Nível:** Júnior  
 **Categoria:** Controle de Fluxo e Lógica
@@ -3828,7 +3234,7 @@ public class IteracaoListas {
 
 ---
 
-## Pergunta 33 — Set: Eliminando Duplicatas
+##  38. <a name='Pergunta33Set:EliminandoDuplicatas'></a>Pergunta 33 — Set: Eliminando Duplicatas
 
 **Nível:** Júnior  
 **Categoria:** Coleções e Estruturas de Dados
@@ -3953,7 +3359,7 @@ List<String> unicos = deduplicador.removerDuplicatasOrdemInsercao(importados);
 
 ---
 
-## Pergunta 34 — toString() e Boas Práticas de Debug
+##  39. <a name='Pergunta34toStringeBoasPrticasdeDebug'></a>Pergunta 34 — toString() e Boas Práticas de Debug
 
 **Nível:** Júnior  
 **Categoria:** Boas Práticas
@@ -4082,7 +3488,7 @@ public String toString() {
 
 ---
 
-## Pergunta 35 — Hierarquia de Exceções
+##  40. <a name='Pergunta35HierarquiadeExcees'></a>Pergunta 35 — Hierarquia de Exceções
 
 **Nível:** Júnior  
 **Categoria:** Tratamento de Exceções
@@ -4233,7 +3639,7 @@ public class TransferenciaController {
 
 ---
 
-## Pergunta 36 — Validação de Parâmetros e Fail-Fast
+##  41. <a name='Pergunta36ValidaodeParmetroseFail-Fast'></a>Pergunta 36 — Validação de Parâmetros e Fail-Fast
 
 **Nível:** Júnior  
 **Categoria:** Boas Práticas
@@ -4371,7 +3777,7 @@ class Produto {
 
 ---
 
-## Pergunta 37 — Map: getOrDefault e putIfAbsent
+##  42. <a name='Pergunta37Map:getOrDefaulteputIfAbsent'></a>Pergunta 37 — Map: getOrDefault e putIfAbsent
 
 **Nível:** Júnior  
 **Categoria:** Coleções e Estruturas de Dados
@@ -4514,7 +3920,7 @@ public class ContadorPalavras {
 
 ---
 
-## Pergunta 38 — Switch Statement: Boas Práticas e Fall-through
+##  43. <a name='Pergunta38SwitchStatement:BoasPrticaseFall-through'></a>Pergunta 38 — Switch Statement: Boas Práticas e Fall-through
 
 **Nível:** Júnior  
 **Categoria:** Controle de Fluxo e Lógica
@@ -4658,7 +4064,7 @@ public String processarPedido(StatusPedido status) {
 
 ---
 
-## Pergunta 39 — List vs Set: Escolhendo a Estrutura Correta
+##  44. <a name='Pergunta39ListvsSet:EscolhendoaEstruturaCorreta'></a>Pergunta 39 — List vs Set: Escolhendo a Estrutura Correta
 
 **Nível:** Júnior  
 **Categoria:** Coleções e Estruturas de Dados
@@ -4794,7 +4200,7 @@ tarefa.imprimirResumo();
 
 ---
 
-## Pergunta 40 — Variáveis Final e Efectivamente Final
+##  45. <a name='Pergunta40VariveisFinaleEfectivamenteFinal'></a>Pergunta 40 — Variáveis Final e Efectivamente Final
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos da linguagem
@@ -4937,7 +4343,7 @@ public class ExemploEffectivelyFinal {
 
 ---
 
-## 📊 Resumo da Parte 4
+##  46. <a name='ResumodaParte4'></a>📊 Resumo da Parte 4
 
 | Item | Detalhe |
 |---|---|
@@ -4955,7 +4361,7 @@ Diga **"continuar"** e eu gero a Parte 5 com as perguntas 41 a 50.
 
 ---
 
-## Pergunta 41 — Clonagem de Objetos: Cloneable e Cópia Defensiva
+##  47. <a name='Pergunta41ClonagemdeObjetos:CloneableeCpiaDefensiva'></a>Pergunta 41 — Clonagem de Objetos: Cloneable e Cópia Defensiva
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos da linguagem
@@ -5087,7 +4493,7 @@ public class DemonstracaoCopia {
 
 ---
 
-## Pergunta 42 — Inner Classes e Classes Aninhadas
+##  48. <a name='Pergunta42InnerClasseseClassesAninhadas'></a>Pergunta 42 — Inner Classes e Classes Aninhadas
 
 **Nível:** Júnior  
 **Categoria:** Orientação a Objetos
@@ -5216,7 +4622,7 @@ public class Cache<K, V> {
 
 ---
 
-## Pergunta 43 — Formatação de Números e Moeda
+##  49. <a name='Pergunta43FormataodeNmeroseMoeda'></a>Pergunta 43 — Formatação de Números e Moeda
 
 **Nível:** Júnior  
 **Categoria:** Manipulação de Strings e Datas
@@ -5344,7 +4750,7 @@ public class FormatadorMoeda {
 
 ---
 
-## Pergunta 44 — Collections.unmodifiable e Imutabilidade de Coleções
+##  50. <a name='Pergunta44Collections.unmodifiableeImutabilidadedeColees'></a>Pergunta 44 — Collections.unmodifiable e Imutabilidade de Coleções
 
 **Nível:** Júnior  
 **Categoria:** Coleções e Estruturas de Dados
@@ -5481,7 +4887,7 @@ class ExemploElementosMutaveis {
 
 ---
 
-## Pergunta 45 — Varargs: Argumentos Variáveis
+##  51. <a name='Pergunta45Varargs:ArgumentosVariveis'></a>Pergunta 45 — Varargs: Argumentos Variáveis
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos da linguagem
@@ -5601,7 +5007,7 @@ public class Logger {
 
 ---
 
-## Pergunta 46 — var (Java 10+): Inferência de Tipo
+##  52. <a name='Pergunta46varJava10:InfernciadeTipo'></a>Pergunta 46 — var (Java 10+): Inferência de Tipo
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos da linguagem
@@ -5739,7 +5145,7 @@ public class ExemploVar {
 
 ---
 
-## Pergunta 47 — Records (Java 14+): Modelagem de Dados
+##  53. <a name='Pergunta47RecordsJava14:ModelagemdeDados'></a>Pergunta 47 — Records (Java 14+): Modelagem de Dados
 
 **Nível:** Júnior  
 **Categoria:** Orientação a Objetos
@@ -5899,7 +5305,7 @@ public record ProdutoDTO(String nome, double preco) {
 
 ---
 
-## Pergunta 48 — Exceções em Construtores e Liberação de Recursos
+##  54. <a name='Pergunta48ExceesemConstrutoreseLiberaodeRecursos'></a>Pergunta 48 — Exceções em Construtores e Liberação de Recursos
 
 **Nível:** Júnior  
 **Categoria:** Tratamento de Exceções
@@ -6047,7 +5453,7 @@ try (ConexaoBanco conn = ConexaoBanco.criar("localhost", 5432, "db.log")) {
 
 ---
 
-## Pergunta 49 — Debugging: Exception Chaining e Cause
+##  55. <a name='Pergunta49Debugging:ExceptionChainingeCause'></a>Pergunta 49 — Debugging: Exception Chaining e Cause
 
 **Nível:** Júnior  
 **Categoria:** Boas Práticas e Debugging
@@ -6196,7 +5602,7 @@ public class UsuarioService {
 
 ---
 
-## Pergunta 50 — Métodos Default em Interfaces
+##  56. <a name='Pergunta50MtodosDefaultemInterfaces'></a>Pergunta 50 — Métodos Default em Interfaces
 
 **Nível:** Júnior  
 **Categoria:** Orientação a Objetos
@@ -6348,7 +5754,7 @@ public interface Printable {
 
 ---
 
-## 📊 Resumo da Parte 5
+##  57. <a name='ResumodaParte5'></a>📊 Resumo da Parte 5
 
 | Item | Detalhe |
 |---|---|
@@ -6366,11 +5772,11 @@ Aqui está a Parte 6, com as perguntas 51 a 60 do roteiro de entrevista técnica
 
 ---
 
-## Parte 6 — Perguntas 51 a 60
+##  58. <a name='Parte6Perguntas51a60'></a>Parte 6 — Perguntas 51 a 60
 
 ---
 
-### Pergunta 51 — Tratamento de exceção em método que pode falhar por múltiplas razões
+###  58.1. <a name='Pergunta51Tratamentodeexceoemmtodoquepodefalharpormltiplasrazes'></a>Pergunta 51 — Tratamento de exceção em método que pode falhar por múltiplas razões
 
 **Nível:** Júnior  
 **Categoria:** Troubleshooting
@@ -6457,7 +5863,7 @@ Faltou: distinguir os tipos de erro, criar mensagens específicas, considerar o 
 
 ---
 
-### Pergunta 52 — NullPointerException evitável em código de manipulação de listas
+###  58.2. <a name='Pergunta52NullPointerExceptionevitvelemcdigodemanipulaodelistas'></a>Pergunta 52 — NullPointerException evitável em código de manipulação de listas
 
 **Nível:** Júnior  
 **Categoria:** Troubleshooting
@@ -6553,7 +5959,7 @@ Faltou: identificar os outros pontos de NPE (pedido null, cliente null, nome nul
 
 ---
 
-### Pergunta 53 — Escolha entre ArrayList e LinkedList em cenário real
+###  58.3. <a name='Pergunta53EscolhaentreArrayListeLinkedListemcenrioreal'></a>Pergunta 53 — Escolha entre ArrayList e LinkedList em cenário real
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -6633,7 +6039,7 @@ Faltou: explicar a complexidade das operações, comparar com ArrayList, e ideal
 
 ---
 
-### Pergunta 54 — Uso correto de equals e hashCode em classe de domínio
+###  58.4. <a name='Pergunta54UsocorretodeequalsehashCodeemclassededomnio'></a>Pergunta 54 — Uso correto de equals e hashCode em classe de domínio
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -6722,7 +6128,7 @@ Faltou: explicar por que o contrato é violado, quais campos devem participar, e
 
 ---
 
-### Pergunta 55 — Vazamento de recurso com conexão de banco de dados não fechada
+###  58.5. <a name='Pergunta55Vazamentoderecursocomconexodebancodedadosnofechada'></a>Pergunta 55 — Vazamento de recurso com conexão de banco de dados não fechada
 
 **Nível:** Júnior  
 **Categoria:** Troubleshooting
@@ -6817,7 +6223,7 @@ Faltou: considerar que exceções podem impedir a execução do `close()`, menci
 
 ---
 
-### Pergunta 56 — Comparação de Strings com equals vs ==
+###  58.6. <a name='Pergunta56ComparaodeStringscomequalsvs'></a>Pergunta 56 — Comparação de Strings com equals vs ==
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -6902,7 +6308,7 @@ Faltou: explicar o string pool, o motivo de `==` funcionar às vezes, e a boa pr
 
 ---
 
-### Pergunta 57 — Sobrescrita vs sobrecarga de método em classe de domínio
+###  58.7. <a name='Pergunta57Sobrescritavssobrecargademtodoemclassededomnio'></a>Pergunta 57 — Sobrescrita vs sobrecarga de método em classe de domínio
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -7008,7 +6414,7 @@ Faltou: explicar que a decisão acontece em momentos diferentes (compilação vs
 
 ---
 
-### Pergunta 58 — Loop infinito por erro de lógica com while
+###  58.8. <a name='Pergunta58Loopinfinitoporerrodelgicacomwhile'></a>Pergunta 58 — Loop infinito por erro de lógica com while
 
 **Nível:** Júnior  
 **Categoria:** Troubleshooting
@@ -7114,7 +6520,7 @@ Faltou: explicar exatamente por que o loop é infinito (i não é incrementado),
 
 ---
 
-### Pergunta 59 — Escolha entre array primitivo e coleção para armazenar notas
+###  58.9. <a name='Pergunta59Escolhaentrearrayprimitivoecoleoparaarmazenarnotas'></a>Pergunta 59 — Escolha entre array primitivo e coleção para armazenar notas
 
 **Nível:** Júnior  
 **Categoria:** Prática
@@ -7208,7 +6614,7 @@ Faltou: explicar por que array é inadequeado para tamanho dinâmico, mencionar 
 
 ---
 
-### Pergunta 60 — Uso de static em excesso e problemas de testabilidade
+###  58.10. <a name='Pergunta60Usodestaticemexcessoeproblemasdetestabilidade'></a>Pergunta 60 — Uso de static em excesso e problemas de testabilidade
 
 **Nível:** Júnior  
 **Categoria:** Boas práticas
@@ -7341,11 +6747,11 @@ Quer que eu continue com a Parte 7 (perguntas 61 a 70)?
 
 ---
 
-## Parte 7 — Perguntas 61 a 70
+##  59. <a name='Parte7Perguntas61a70'></a>Parte 7 — Perguntas 61 a 70
 
 ---
 
-### Pergunta 61 — Tratamento de NullPointerException em código legado
+###  59.1. <a name='Pergunta61TratamentodeNullPointerExceptionemcdigolegado'></a>Pergunta 61 — Tratamento de NullPointerException em código legado
 
 **Nível:** Júnior  
 **Categoria:** Troubleshooting
@@ -7418,7 +6824,7 @@ Em um sistema de e-commerce, um cliente pode ter cadastrado apenas o nome e o CP
 
 ---
 
-### Pergunta 62 — Diferença entre == e .equals() ao comparar strings
+###  59.2. <a name='Pergunta62Diferenaentree.equalsaocompararstrings'></a>Pergunta 62 — Diferença entre == e .equals() ao comparar strings
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -7488,7 +6894,7 @@ System.out.println(a.equals(c)); // true (conteúdo igual)
 
 ---
 
-### Pergunta 63 — Entendendo try-with-resources e gerenciamento de recursos
+###  59.3. <a name='Pergunta63Entendendotry-with-resourcesegerenciamentoderecursos'></a>Pergunta 63 — Entendendo try-with-resources e gerenciamento de recursos
 
 **Nível:** Júnior  
 **Categoria:** Prática
@@ -7564,7 +6970,7 @@ Em um sistema que processa múltiplos arquivos de log, esquecer de fechar um `Bu
 
 ---
 
-### Pergunta 64 — Uso correto de Collections: ArrayList vs LinkedList
+###  59.4. <a name='Pergunta64UsocorretodeCollections:ArrayListvsLinkedList'></a>Pergunta 64 — Uso correto de Collections: ArrayList vs LinkedList
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -7635,7 +7041,7 @@ List<Ticket> filaLenta = new LinkedList<>(); // get(1000) → percorre 1000 nós
 
 ---
 
-### Pergunta 65 — Entendendo o conceito de encapsulamento com exemplo prático
+###  59.5. <a name='Pergunta65Entendendooconceitodeencapsulamentocomexemploprtico'></a>Pergunta 65 — Entendendo o conceito de encapsulamento com exemplo prático
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -7755,7 +7161,7 @@ Com encapsulamento, essas operações são impossíveis — só é possível int
 
 ---
 
-### Pergunta 66 — Debugging: método que retorna resultado incorreto
+###  59.6. <a name='Pergunta66Debugging:mtodoqueretornaresultadoincorreto'></a>Pergunta 66 — Debugging: método que retorna resultado incorreto
 
 **Nível:** Júnior  
 **Categoria:** Troubleshooting
@@ -7851,7 +7257,7 @@ List<Double> notas = Arrays.asList(7.0, 8.0, 6.0);
 
 ---
 
-### Pergunta 67 — Compreensão de herança e sobrescrita de métodos
+###  59.7. <a name='Pergunta67Compreensodeheranaesobrescritademtodos'></a>Pergunta 67 — Compreensão de herança e sobrescrita de métodos
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -7949,7 +7355,7 @@ f2.calcularSalario(); // chama Gerente.calcularSalario() — polimorfismo!
 
 ---
 
-### Pergunta 68 — Compreensão de StringBuilder vs concatenação de strings
+###  59.8. <a name='Pergunta68CompreensodeStringBuildervsconcatenaodestrings'></a>Pergunta 68 — Compreensão de StringBuilder vs concatenação de strings
 
 **Nível:** Júnior  
 **Categoria:** Prática
@@ -8044,7 +7450,7 @@ String resultado = sb.toString();
 
 ---
 
-### Pergunta 69 — Uso de interfaces vs classes abstratas
+###  59.9. <a name='Pergunta69Usodeinterfacesvsclassesabstratas'></a>Pergunta 69 — Uso de interfaces vs classes abstratas
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -8163,7 +7569,7 @@ Pense em uma interface como um **contrato de trabalho**: define o que você deve
 
 ---
 
-### Pergunta 70 — Tratamento de exceções verificadas vs não verificadas
+###  59.10. <a name='Pergunta70Tratamentodeexceesverificadasvsnoverificadas'></a>Pergunta 70 — Tratamento de exceções verificadas vs não verificadas
 
 **Nível:** Júnior  
 **Categoria:** Prática
@@ -8283,7 +7689,7 @@ int valor = array[10]; // ArrayIndexOutOfBoundsException em runtime
 
 ---
 
-### Resumo da Parte 7
+###  59.11. <a name='ResumodaParte7'></a>Resumo da Parte 7
 
 | Pergunta | Título | Categoria |
 |---|---|---|
@@ -8303,13 +7709,13 @@ int valor = array[10]; // ArrayIndexOutOfBoundsException em runtime
 
 ---
 
-## Roteiro de Entrevista Técnica — Java (Júnior)
+##  60. <a name='RoteirodeEntrevistaTcnicaJavaJnior'></a>Roteiro de Entrevista Técnica — Java (Júnior)
 
-### Continuação — Perguntas 71 a 100
+###  60.1. <a name='ContinuaoPerguntas71a100'></a>Continuação — Perguntas 71 a 100
 
 ---
 
-### Pergunta 71 — Tratamento de NullPointerException em código legado
+###  60.2. <a name='Pergunta71TratamentodeNullPointerExceptionemcdigolegado'></a>Pergunta 71 — Tratamento de NullPointerException em código legado
 
 **Nível:** Júnior  
 **Categoria:** Troubleshooting
@@ -8380,7 +7786,7 @@ String email = clienteOpt
 
 ---
 
-### Pergunta 72 — Compreensão de equals() e hashCode()
+###  60.3. <a name='Pergunta72CompreensodeequalsehashCode'></a>Pergunta 72 — Compreensão de equals() e hashCode()
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -8454,7 +7860,7 @@ public class Aluno {
 
 ---
 
-### Pergunta 73 — Diferença entre == e equals() com Strings
+###  60.4. <a name='Pergunta73DiferenaentreeequalscomStrings'></a>Pergunta 73 — Diferença entre == e equals() com Strings
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -8536,7 +7942,7 @@ if (Objects.equals(senhaDigitada, senhaCadastrada)) {
 
 ---
 
-### Pergunta 74 — Uso correto deCollections: List vs Set vs Map
+###  60.5. <a name='Pergunta74UsocorretodeCollections:ListvsSetvsMap'></a>Pergunta 74 — Uso correto deCollections: List vs Set vs Map
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -8607,7 +8013,7 @@ Livro encontrado = livrosPorISBN.get("9788535913776"); // Busca rápida O(1)
 
 ---
 
-### Pergunta 75 — Laço for-each vs for tradicional: modificação durante iteração
+###  60.6. <a name='Pergunta75Laofor-eachvsfortradicional:modificaoduranteiterao'></a>Pergunta 75 — Laço for-each vs for tradicional: modificação durante iteração
 
 **Nível:** Júnior  
 **Categoria:** Prática
@@ -8683,7 +8089,7 @@ List<Produto> produtosFiltrados = produtos.stream()
 
 ---
 
-### Pergunta 76 — Compreensão de Exceções Checked vs Unchecked
+###  60.7. <a name='Pergunta76CompreensodeExceesCheckedvsUnchecked'></a>Pergunta 76 — Compreensão de Exceções Checked vs Unchecked
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -8767,7 +8173,7 @@ public void processarPagamento(Pedido pedido)
 
 ---
 
-### Pergunta 77 — Uso de StringBuilder em concatenação de strings
+###  60.8. <a name='Pergunta77UsodeStringBuilderemconcatenaodestrings'></a>Pergunta 77 — Uso de StringBuilder em concatenação de strings
 
 **Nível:** Júnior  
 **Categoria:** Desempenho
@@ -8834,7 +8240,7 @@ String resultado = transacoes.stream()
 
 ---
 
-### Pergunta 78 — Compreensão de herança e polimorfismo
+###  60.9. <a name='Pergunta78Compreensodeheranaepolimorfismo'></a>Pergunta 78 — Compreensão de herança e polimorfismo
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -8925,7 +8331,7 @@ for (Funcionario f : funcionarios) {
 
 ---
 
-### Pergunta 79 — Compreensão de modificadores de acesso
+###  60.10. <a name='Pergunta79Compreensodemodificadoresdeacesso'></a>Pergunta 79 — Compreensão de modificadores de acesso
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -9008,7 +8414,7 @@ class ContaCorrente extends ContaBancaria {
 
 ---
 
-### Pergunta 80 — Uso de interfaces vs classes abstratas
+###  60.11. <a name='Pergunta80Usodeinterfacesvsclassesabstratas'></a>Pergunta 80 — Uso de interfaces vs classes abstratas
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -9102,7 +8508,7 @@ public class NotificadorSMS extends AbstractNotificador {
 
 ---
 
-### Pergunta 81 — Compreensão de Casting e ClassCastException
+###  60.12. <a name='Pergunta81CompreensodeCastingeClassCastException'></a>Pergunta 81 — Compreensão de Casting e ClassCastException
 
 **Nível:** Júnior  
 **Categoria:** Troubleshooting
@@ -9182,7 +8588,7 @@ if (obj instanceof String) {
 
 ---
 
-### Pergunta 82 — Entendendo o ciclo de vida de um objeto com Garbage Collector
+###  60.13. <a name='Pergunta82EntendendoociclodevidadeumobjetocomGarbageCollector'></a>Pergunta 82 — Entendendo o ciclo de vida de um objeto com Garbage Collector
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -9266,7 +8672,7 @@ public class ResultadoProcessamento {
 
 ---
 
-### Pergunta 83 — Uso de try-with-resources para gerenciamento de recursos
+###  60.14. <a name='Pergunta83Usodetry-with-resourcesparagerenciamentoderecursos'></a>Pergunta 83 — Uso de try-with-resources para gerenciamento de recursos
 
 **Nível:** Júnior  
 **Categoria:** Prática
@@ -9345,7 +8751,7 @@ public void importarCSVAntigo(String caminhoCSV) throws IOException {
 
 ---
 
-### Pergunta 84 — Entendendo autoboxing e unboxing
+###  60.15. <a name='Pergunta84Entendendoautoboxingeunboxing'></a>Pergunta 84 — Entendendo autoboxing e unboxing
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -9426,7 +8832,7 @@ if (valor1 != null && valor1.equals(valor2)) { // Seguro
 
 ---
 
-### Pergunta 85 — Debugging: NullPointerException sem stack trace informativo
+###  60.16. <a name='Pergunta85Debugging:NullPointerExceptionsemstacktraceinformativo'></a>Pergunta 85 — Debugging: NullPointerException sem stack trace informativo
 
 **Nível:** Júnior  
 **Categoria:** Troubleshooting
@@ -9524,7 +8930,7 @@ public class Pedido {
 
 ---
 
-### Pergunta 86 — Entendendo static vs instância
+###  60.17. <a name='Pergunta86Entendendostaticvsinstncia'></a>Pergunta 86 — Entendendo static vs instância
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -9618,7 +9024,7 @@ System.out.println(c2.getSaldo()); // 0.0 — saldos independentes
 
 ---
 
-### Pergunta 87 — Uso correto de Generics com wildcards
+###  60.18. <a name='Pergunta87UsocorretodeGenericscomwildcards'></a>Pergunta 87 — Uso correto de Generics com wildcards
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -9704,7 +9110,7 @@ public void adicionarAnimal(List<? super Cachorro> lista) {
 
 ---
 
-### Pergunta 88 — Manipulação de datas com java.time
+###  60.19. <a name='Pergunta88Manipulaodedatascomjava.time'></a>Pergunta 88 — Manipulação de datas com java.time
 
 **Nível:** Júnior  
 **Categoria:** Prática
@@ -9787,7 +9193,7 @@ public class AgendamentoService {
 
 ---
 
-### Pergunta 89 — Entendendo o método toString()
+###  60.20. <a name='Pergunta89EntendendoomtodotoString'></a>Pergunta 89 — Entendendo o método toString()
 
 **Nível:** Júnior  
 **Categoria:** Prática
@@ -9865,7 +9271,7 @@ public class Pedido {
 
 ---
 
-### Pergunta 90 — Entendendo varargs
+###  60.21. <a name='Pergunta90Entendendovarargs'></a>Pergunta 90 — Entendendo varargs
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -9942,7 +9348,7 @@ public class GeradorRelatorio {
 
 ---
 
-### Pergunta 91 — Entendendo ordenação com Comparable e Comparator
+###  60.22. <a name='Pergunta91EntendendoordenaocomComparableeComparator'></a>Pergunta 91 — Entendendo ordenação com Comparable e Comparator
 
 **Nível:** Júnior  
 **Categoria:** Prática
@@ -10035,7 +9441,7 @@ public static final Comparator<Paciente> ORDEM_ATENDIMENTO_CORRETA =
 
 ---
 
-### Pergunta 92 — Uso de switch expression e pattern matching
+###  60.23. <a name='Pergunta92Usodeswitchexpressionepatternmatching'></a>Pergunta 92 — Uso de switch expression e pattern matching
 
 **Nível:** Júnior  
 **Categoria:** Prática
@@ -10137,7 +9543,7 @@ public double calcularTaxaJava8(Pagamento pagamento) {
 
 ---
 
-### Pergunta 93 — Entendendo imutabilidade de objetos
+###  60.24. <a name='Pergunta93Entendendoimutabilidadedeobjetos'></a>Pergunta 93 — Entendendo imutabilidade de objetos
 
 **Nível:** Júnior  
 **Categoria:** Prática
@@ -10236,7 +9642,7 @@ public record TransferenciaRecord(
 
 ---
 
-### Pergunta 94 — Uso de Map para agrupamento e contagem
+###  60.25. <a name='Pergunta94UsodeMapparaagrupamentoecontagem'></a>Pergunta 94 — Uso de Map para agrupamento e contagem
 
 **Nível:** Júnior  
 **Categoria:** Prática
@@ -10325,7 +9731,7 @@ class Venda {
 
 ---
 
-### Pergunta 95 — Entendendo o conceito de this e super
+###  60.26. <a name='Pergunta95Entendendooconceitodethisesuper'></a>Pergunta 95 — Entendendo o conceito de this e super
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -10414,7 +9820,7 @@ public class Carro extends Veiculo {
 
 ---
 
-### Pergunta 96 — Entendendo Exceptions em herança
+###  60.27. <a name='Pergunta96EntendendoExceptionsemherana'></a>Pergunta 96 — Entendendo Exceptions em herança
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -10510,7 +9916,7 @@ class Filho5 extends Pai {
 
 ---
 
-### Pergunta 97 — Uso de enum em vez de constantes
+###  60.28. <a name='Pergunta97Usodeenumemvezdeconstantes'></a>Pergunta 97 — Uso de enum em vez de constantes
 
 **Nível:** Júnior  
 **Categoria:** Prática
@@ -10628,7 +10034,7 @@ for (StatusPedido s : StatusPedido.values()) {
 
 ---
 
-### Pergunta 98 — Entendendo passagem por valor vs referência
+###  60.29. <a name='Pergunta98Entendendopassagemporvalorvsreferncia'></a>Pergunta 98 — Entendendo passagem por valor vs referência
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -10722,7 +10128,7 @@ System.out.println(n); // Ainda é 5
 
 ---
 
-### Pergunta 99 — Entendendo fianl em variáveis, parâmetros e classes
+###  60.30. <a name='Pergunta99Entendendofianlemvariveisparmetroseclasses'></a>Pergunta 99 — Entendendo fianl em variáveis, parâmetros e classes
 
 **Nível:** Júnior  
 **Categoria:** Fundamentos
@@ -10824,7 +10230,7 @@ public class BaseService {
 
 ---
 
-### Pergunta 100 — Debugging: identificar erro lógico em código
+###  60.31. <a name='Pergunta100Debugging:identificarerrolgicoemcdigo'></a>Pergunta 100 — Debugging: identificar erro lógico em código
 
 **Nível:** Júnior  
 **Categoria:** Troubleshooting
@@ -10926,7 +10332,7 @@ public static boolean estaCrescenteIterator(List<Integer> numeros) {
 
 ---
 
-## Resumo da Entrevista
+##  61. <a name='ResumodaEntrevista'></a>Resumo da Entrevista
 
 | Item | Detalhe |
 |------|---------|
@@ -10935,7 +10341,7 @@ public static boolean estaCrescenteIterator(List<Integer> numeros) {
 | **Quantidade total de perguntas** | 100 |
 | **Tipo predominante** | Baseadas em cenários reais |
 
-### Distribuição por categoria
+###  61.1. <a name='Distribuioporcategoria'></a>Distribuição por categoria
 
 | Categoria | Quantidade aproximada |
 |-----------|----------------------|
@@ -10948,7 +10354,7 @@ public static boolean estaCrescenteIterator(List<Integer> numeros) {
 | Arquitetura | 5 |
 | Boas práticas | 10 |
 
-### Principais competências avaliadas
+###  61.2. <a name='Principaiscompetnciasavaliadas'></a>Principais competências avaliadas
 
 - Orientação a objetos (herança, polimorfismo, encapsulamento, interfaces)
 - Collections Framework (List, Set, Map, Iterator, Generics)
@@ -10963,74 +10369,74 @@ public static boolean estaCrescenteIterator(List<Integer> numeros) {
 
 ---
 
-## Matriz de Competências## Recomendações para o Entrevistador
+##  62. <a name='MatrizdeCompetnciasRecomendaesparaoEntrevistador'></a>Matriz de Competências## Recomendações para o Entrevistador
 
-### Como conduzir a entrevista
+###  62.1. <a name='Comoconduziraentrevista'></a>Como conduzir a entrevista
 
 - **Comece com perguntas de fundamentos** (72, 73, 86) para aquecer o candidato e estabelecer uma baseline de conhecimento. Estas perguntas são menos ameaçadoras e ajudam a reduzir a ansiedade.
 - **Intercalae perguntas conceituais e práticas** — após uma pergunta teórica (ex: 76 sobre checked vs unchecked), faça uma prática (ex: 83 sobre try-with-resources) para verificar se o conhecimento se traduz em código.
 - **Use as perguntas de troubleshooting** (71, 75, 81, 85, 100) para avaliar pensamento analítico. Observe como o candidato se comporta ao encontrar um bug — fica nervoso, pede ajuda, ou segue metodicamente?
 - **Não faça todas as 100 perguntas** — selecione 10-15 que cubram as competências essenciais para a vaga específica.
 
-### Como fazer perguntas de aprofundamento
+###  62.2. <a name='Comofazerperguntasdeaprofundamento'></a>Como fazer perguntas de aprofundamento
 
 - Use as perguntas de aprofundamento listadas **apenas quando o candidato responder rapidamente ou de forma muito superficial**.
 - Se o candidato responder bem, avance para a próxima pergunta — não tente "derrubar" o candidato.
 - Se o candidato travar, ofereça uma dica parcial e observe se ele consegue progredir com orientação.
 
-### Como diferenciar insegurança de falta de conhecimento
+###  62.3. <a name='Comodiferenciarinseguranadefaltadeconhecimento'></a>Como diferenciar insegurança de falta de conhecimento
 
 - **Insegurança:** O candidato hesita, mas quando você pede para "pensar em voz alta", começa a articular conceitos corretos. Dê tempo e encoraje.
 - **Falta de conhecimento:** O candidato tenta adivinhar ou apresenta conceitos incorretos com confiança. Diferencie erros de nervosismo de erros conceituais.
 
-### Como avaliar respostas parcialmente corretas
+###  62.4. <a name='Comoavaliarrespostasparcialmentecorretas'></a>Como avaliar respostas parcialmente corretas
 
 - Use a escala 0-5 de forma justa: nota 2 não é "reprovado", é "conhece parte do conceito".
 - Avalie o raciocínio, não apenas a resposta final. Um candidato que erra a sintaxe mas explica corretamente o conceito merece nota 3.
 - Considere a capacidade de receber dicas e corrigir o raciocínio — isso é tão importante quanto saber a resposta.
 
-### Como evitar vieses na avaliação
+###  62.5. <a name='Comoevitarviesesnaavaliao'></a>Como evitar vieses na avaliação
 
 - Não seja influenciado pela confiança do candidato — confiança verbal não equivale a competência técnica.
 - Avalie cada pergunta independentemente — um erro em uma não deve contaminar a avaliação das demais.
 - Anote exemplos específicos de respostas para justificar cada nota.
 
-### Como registrar evidências objetivas
+###  62.6. <a name='Comoregistrarevidnciasobjetivas'></a>Como registrar evidências objetivas
 
 - Para cada pergunta, anote: (1) a nota, (2) um trecho da resposta, (3) se precisou de dica, (4) tempo de resposta.
 - Use a matriz de competências para identificar gaps: se o candidato errou 72 (equals/hashCode), 81 (casting) e 87 (generics), há um gap em Collections e OO que deve ser documentado.
 
 ---
 
-## Recomendações para o Candidato
+##  63. <a name='RecomendaesparaoCandidato'></a>Recomendações para o Candidato
 
-### Como estruturar o raciocínio
+###  63.1. <a name='Comoestruturaroraciocnio'></a>Como estruturar o raciocínio
 
 - **Pense em voz alta** — o entrevistador avalia seu processo de pensamento, não apenas a resposta final. Diga o que está analisando, quais alternativas considera, e por que descarta cada uma.
 - **Comece pelo óbvio e aprofunde** — primeiro dê a resposta direta, depois explique o porquê, depois mencione casos especiais e trade-offs.
 - **Use exemplos** — sempre que possível, ilustre sua resposta com um exemplo de código ou situação real que você viveu.
 
-### Como explicar decisões técnicas
+###  63.2. <a name='Comoexplicardecisestcnicas'></a>Como explicar decisões técnicas
 
 - Sempre justifique o **porquê** da escolha, não apenas o **o quê**. "Usaria ArrayList porque preciso de acesso por índice e a ordem de inserção importa" é melhor que "Usaria ArrayList".
 - Mencione alternativas e explique por que não as escolheu: "Poderia usar LinkedList, mas como não preciso inserir no início da lista, ArrayList é mais eficiente para iteração."
 
-### Como utilizar exemplos reais
+###  63.3. <a name='Comoutilizarexemplosreais'></a>Como utilizar exemplos reais
 
 - Relacione a pergunta com algo que você já fez: "No projeto X, tivemos um problema parecido de ConcurrentModificationException quando..."
 - Seja específico: mencione a tecnologia, o contexto, e a solução aplicada.
 
-### Como admitir que não sabe algo
+###  63.4. <a name='Comoadmitirquenosabealgo'></a>Como admitir que não sabe algo
 
 - Seja honesto: "Não conheço esse conceito em detalhe, mas pelo contexto eu imagino que..." — tentar adivinhar com confiança é pior que admitir desconhecimento.
 - Mostre como pesquisaria: "Não sei a resposta exata, mas consultaria a documentação de X ou procuraria no código do projeto."
 
-### Como discutir trade-offs
+###  63.5. <a name='Comodiscutirtrade-offs'></a>Como discutir trade-offs
 
 - Toda decisão técnica tem prós e contras. Ao escolher uma abordagem, sempre mencione o que você está sacrificando: "Usar Optional deixa o código mais expressivo, mas adiciona um nível de indireção que pode confundir desenvolvedores juniores."
 - Mostre maturidade: não existe solução perfeita, existem soluções adequadas ao contexto.
 
-### Como responder perguntas práticas e de arquitetura
+###  63.6. <a name='Comoresponderperguntasprticasedearquitetura'></a>Como responder perguntas práticas e de arquitetura
 
 - Em perguntas de código, escreva primeiro a solução simples e correta, depois otimize se houver tempo.
 - Em perguntas de cenário, considere os requisitos não-funcionais (performance, manutenibilidade, segurança) além dos funcionais.
