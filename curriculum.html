@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thiago Bianeck — Currículo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:  #1a3a5c;
+      --accent:   #2e7dd1;
+      --light-bg: #eef4fb;
+      --border:   #c5d9f0;
+      --text:     #1e2a38;
+      --muted:    #5a6a7e;
+      --white:    #ffffff;
+      --tag-bg:   #ddeaf9;
+      --tag-col:  #1a3a5c;
+      --sidebar:  195px;
+    }
+
+    html, body {
+      font-family: 'Inter', sans-serif;
+      font-size: 9pt;
+      color: var(--text);
+      background: #d8e2ef;
+      line-height: 1.5;
+    }
+
+    /* ── PAGE WRAPPER ── */
+    .page {
+      width: 210mm;
+      margin: 20px auto;
+      background: var(--white);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.15);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    /* ══════════════════════════════
+       HEADER
+    ══════════════════════════════ */
+    .header {
+      background: linear-gradient(135deg, #1a3a5c 0%, #1d4f88 55%, #2e7dd1 100%);
+      color: #fff;
+      padding: 28px 34px 22px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+    }
+
+    .avatar {
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.14);
+      border: 2.5px solid rgba(255,255,255,0.45);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.9rem;
+      color: rgba(255,255,255,0.78);
+    }
+
+    .htext { flex: 1; }
+
+    .htext h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 19pt;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 3px;
+    }
+
+    .htext .subtitle {
+      font-size: 7.8pt;
+      color: rgba(255,255,255,0.76);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .cbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 16px;
+    }
+
+    .cbar a, .cbar span {
+      color: rgba(255,255,255,0.88);
+      text-decoration: none;
+      font-size: 7.5pt;
+      display: flex; align-items: center; gap: 5px;
+    }
+
+    .cbar i { font-size: 7.8pt; opacity: 0.72; }
+
+    /* ══════════════════════════════
+       BODY FLEX
+    ══════════════════════════════ */
+    .body {
+      display: flex;
+      align-items: stretch;
+      min-height: 0;
+    }
+
+    /* ══════════════════════════════
+       SIDEBAR
+    ══════════════════════════════ */
+    .sidebar {
+      width: var(--sidebar);
+      min-width: var(--sidebar);
+      flex-shrink: 0;
+      background: var(--light-bg);
+      border-right: 1px solid var(--border);
+      padding: 20px 15px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .ss { margin-bottom: 18px; }
+
+    .ss h3 {
+      font-size: 6.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      border-bottom: 1.5px solid var(--accent);
+      padding-bottom: 3px;
+      margin-bottom: 8px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 3px; }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-col);
+      font-size: 6.2pt;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 20px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .slist { list-style: none; padding: 0; }
+
+    .slist li {
+      font-size: 7.5pt;
+      color: var(--text);
+      padding: 2px 0 2px 10px;
+      position: relative;
+      line-height: 1.42;
+    }
+
+    .slist li::before {
+      content: '▸';
+      color: var(--accent);
+      font-size: 6pt;
+      position: absolute;
+      left: 0; top: 3px;
+    }
+
+    .lang-item { margin-bottom: 7px; }
+    .lang-name { font-size: 7.5pt; font-weight: 600; }
+    .lang-lvl  { font-size: 6.8pt; color: var(--muted); margin-bottom: 3px; }
+
+    .lbar {
+      height: 3.5px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .lbar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 2px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .cert-item {
+      font-size: 7.2pt;
+      color: var(--text);
+      padding: 2px 0 2px 10px;
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .cert-item::before {
+      content: '✦';
+      color: var(--accent);
+      font-size: 5.5pt;
+      position: absolute;
+      left: 0; top: 3px;
+    }
+
+    /* ══════════════════════════════
+       MAIN
+    ══════════════════════════════ */
+    .main {
+      flex: 1;
+      min-width: 0;
+      padding: 20px 26px;
+    }
+
+    .section { margin-bottom: 18px; }
+
+    .sec-title {
+      font-size: 8.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 3px;
+      margin-bottom: 11px;
+      display: flex; align-items: center; gap: 6px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .sec-title i { color: var(--accent); font-size: 8.5pt; }
+
+    /* Resumo */
+    .summary {
+      font-size: 7.8pt;
+      line-height: 1.68;
+      text-align: justify;
+      color: var(--text);
+    }
+
+    /* ── EXP ITEM ── */
+    .exp {
+      margin-bottom: 15px;
+      padding-left: 12px;
+      border-left: 2.5px solid var(--border);
+      position: relative;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .exp::before {
+      content: '';
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border: 2px solid var(--white);
+      border-radius: 50%;
+      position: absolute;
+      left: -5px; top: 3px;
+      box-shadow: 0 0 0 1.5px var(--accent);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .exp-hdr {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1px;
+      margin-bottom: 1px;
+    }
+
+    .exp-role   { font-size: 8.5pt; font-weight: 700; color: var(--primary); }
+    .exp-period { font-size: 6.8pt; color: var(--muted); font-weight: 500; white-space: nowrap; }
+    .exp-co     { font-size: 7.8pt; font-weight: 600; color: var(--accent); margin-bottom: 3px; }
+    .exp-ctx    { font-size: 7.2pt; color: var(--muted); font-style: italic; margin-bottom: 5px; line-height: 1.48; }
+    .exp-squad  { font-size: 7.5pt; font-weight: 700; color: var(--primary); margin: 5px 0 3px; }
+
+    .blist { list-style: none; padding: 0; margin: 0; }
+
+    .blist li {
+      font-size: 7.5pt;
+      color: var(--text);
+      padding: 2px 0 2px 12px;
+      position: relative;
+      line-height: 1.52;
+    }
+
+    .blist li::before {
+      content: '▸';
+      color: var(--accent);
+      font-size: 6pt;
+      position: absolute;
+      left: 0; top: 3px;
+    }
+
+    .blist li strong { color: var(--primary); }
+
+    .exp-tech { margin-top: 5px; display: flex; flex-wrap: wrap; gap: 3px; }
+
+    /* ── HIST ITEM (experiências antigas) ── */
+    .hist {
+      margin-bottom: 8px;
+      padding-left: 12px;
+      border-left: 2px solid var(--border);
+      position: relative;
+    }
+
+    .hist::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--muted);
+      border: 1.5px solid var(--white);
+      border-radius: 50%;
+      position: absolute;
+      left: -4.5px; top: 3px;
+    }
+
+    .hist-role { font-size: 7.8pt; font-weight: 700; color: var(--text); }
+    .hist-co   { font-size: 7.2pt; font-weight: 600; color: var(--accent); }
+    .hist-per  { font-size: 6.8pt; color: var(--muted); margin-bottom: 2px; }
+    .hist-desc { font-size: 7.2pt; color: var(--text); line-height: 1.5; }
+
+    /* ── EDU ITEM ── */
+    .edu {
+      margin-bottom: 9px;
+      padding-left: 12px;
+      border-left: 2.5px solid var(--border);
+      position: relative;
+    }
+
+    .edu::before {
+      content: '';
+      width: 8px; height: 8px;
+      background: var(--primary);
+      border: 2px solid var(--white);
+      border-radius: 50%;
+      position: absolute;
+      left: -5px; top: 3px;
+      box-shadow: 0 0 0 1.5px var(--primary);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .edu-degree { font-size: 8pt; font-weight: 700; color: var(--primary); }
+    .edu-inst   { font-size: 7.5pt; font-weight: 600; color: var(--accent); }
+    .edu-period { font-size: 6.8pt; color: var(--muted); }
+
+    /* ══════════════════════════════
+       PRINT
+    ══════════════════════════════ */
+    @media print {
+      @page { size: A4; margin: 0; }
+
+      html, body {
+        background: white !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        font-size: 8pt !important;
+      }
+
+      .page {
+        width: 210mm !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        overflow: visible !important;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #1a3a5c 0%, #1d4f88 55%, #2e7dd1 100%) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .sidebar {
+        background: #ffffff !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .tag {
+        background: #ddeaf9 !important;
+        color: #1a3a5c !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .lbar { background: #c5d9f0 !important; }
+
+      .lbar-fill {
+        background: linear-gradient(90deg, #1a3a5c, #2e7dd1) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .exp::before {
+        background: #2e7dd1 !important;
+        box-shadow: 0 0 0 1.5px #2e7dd1 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .edu::before {
+        background: #1a3a5c !important;
+        box-shadow: 0 0 0 1.5px #1a3a5c !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .sec-title {
+        border-bottom-color: #2e7dd1 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .ss h3 {
+        border-bottom-color: #2e7dd1 !important;
+        color: #2e7dd1 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .body { display: flex !important; }
+      .sidebar { width: 195px !important; min-width: 195px !important; }
+
+      .exp, .hist, .edu { page-break-inside: inherit; break-inside: inherit; }
+      .section { page-break-inside: inherit; break-inside: inherit; }
+
+      a { color: inherit !important; text-decoration: none !important; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══ HEADER ══ -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="htext">
+        <h1>Thiago Moreira Bianeck</h1>
+        <div class="subtitle">
+          Engenheiro de Software | Desenvolvedor Java | Escritor
+          — blog pessoal: thiagobianeck.com.br
+        </div>
+        <div class="cbar">
+          <span><i class="fa-solid fa-phone"></i>46-999100270</span>
+          <a href="mailto:thiagobianeck@gmail.com"><i class="fa-solid fa-envelope"></i>thiagobianeck@gmail.com</a>
+          <a href="https://github.com/thgbianeck" target="_blank"><i class="fa-brands fa-github"></i>github.com/thgbianeck</a>
+          <a href="https://www.linkedin.com/in/thiagobianeck" target="_blank"><i class="fa-brands fa-linkedin"></i>linkedin.com/in/thiagobianeck</a>
+          <a href="https://curriculum.thiagobianeck.com.br" target="_blank"><i class="fa-solid fa-globe"></i>curriculum.thiagobianeck.com.br</a>
+          <span><i class="fa-solid fa-location-dot"></i>Francisco Beltrão, Paraná, Brasil</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <!-- ══ SIDEBAR ══ -->
+    <aside class="sidebar">
+
+      <div class="ss">
+        <h3><i class="fa-solid fa-star" style="margin-right:3px"></i>Principais Competências</h3>
+        <ul class="slist">
+          <li>Desenvolvimento orientado a testes</li>
+          <li>ISO8583</li>
+          <li>Desenvolvimento de software</li>
+        </ul>
+      </div>
+
+      <div class="ss">
+        <h3><i class="fa-solid fa-code" style="margin-right:3px"></i>Stack Core</h3>
+        <div class="tags">
+          <span class="tag">Java 8+</span>
+          <span class="tag">Spring Boot</span>
+          <span class="tag">Spring Security</span>
+          <span class="tag">OAuth2/JWT</span>
+          <span class="tag">Spring MVC</span>
+          <span class="tag">Apache Camel</span>
+          <span class="tag">Quarkus</span>
+          <span class="tag">REST</span>
+          <span class="tag">gRPC</span>
+          <span class="tag">GraphQL</span>
+          <span class="tag">RabbitMQ</span>
+          <span class="tag">Oracle</span>
+          <span class="tag">SQL Server</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">Redis</span>
+          <span class="tag">DynamoDB</span>
+        </div>
+      </div>
+
+      <div class="ss">
+        <h3><i class="fa-solid fa-cloud" style="margin-right:3px"></i>Cloud & Infra</h3>
+        <div class="tags">
+          <span class="tag">AWS SQS</span>
+          <span class="tag">AWS SNS</span>
+          <span class="tag">DynamoDB</span>
+          <span class="tag">Docker</span>
+          <span class="tag">SonarQube</span>
+          <span class="tag">Linux</span>
+          <span class="tag">Jenkins</span>
+          <span class="tag">GitHub Actions</span>
+          <span class="tag">Nexus</span>
+          <span class="tag">ELK Stack</span>
+        </div>
+      </div>
+
+      <div class="ss">
+        <h3><i class="fa-solid fa-flask" style="margin-right:3px"></i>Em Estudo</h3>
+        <div class="tags">
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Spring Cloud</span>
+          <span class="tag">Resilience4j</span>
+          <span class="tag">TestContainers</span>
+          <span class="tag">Prometheus</span>
+          <span class="tag">Grafana</span>
+          <span class="tag">Apache Kafka</span>
+        </div>
+      </div>
+
+      <div class="ss">
+        <h3><i class="fa-solid fa-layer-group" style="margin-right:3px"></i>Metodologias</h3>
+        <ul class="slist">
+          <li>Scrum / Kanban</li>
+          <li>Clean Code</li>
+          <li>SOLID</li>
+          <li>Design Patterns</li>
+          <li>Arquitetura Limpa</li>
+        </ul>
+      </div>
+
+      <div class="ss">
+        <h3><i class="fa-solid fa-language" style="margin-right:3px"></i>Idiomas</h3>
+        <div class="lang-item">
+          <div class="lang-name">Inglês Técnico</div>
+          <div class="lang-lvl">Professional Working</div>
+          <div class="lbar"><div class="lbar-fill" style="width:70%"></div></div>
+        </div>
+        <div class="lang-item">
+          <div class="lang-name">Espanhol</div>
+          <div class="lang-lvl">Professional Working</div>
+          <div class="lbar"><div class="lbar-fill" style="width:65%"></div></div>
+        </div>
+      </div>
+
+      <div class="ss">
+        <h3><i class="fa-solid fa-certificate" style="margin-right:3px"></i>Certificações</h3>
+        <div class="cert-item">Desenvolvimento seguro</div>
+        <div class="cert-item">Curso de Apache Kafka</div>
+        <div class="cert-item">Curso de HTML5</div>
+      </div>
+
+    </aside>
+
+    <!-- ══ MAIN ══ -->
+    <main class="main">
+
+      <!-- RESUMO -->
+      <div class="section">
+        <div class="sec-title"><i class="fa-solid fa-address-card"></i>Resumo</div>
+        <p class="summary">
+          Engenheiro de Software Sênior com mais de 13 anos de experiência em desenvolvimento backend, especializado em Java, Spring Boot, arquitetura de microserviços e soluções para o setor financeiro/bancário. Atuei em projetos críticos de alta disponibilidade para clientes como Banco Safra, Porto Seguro, Vivo, Evertec e redes Record TV/NSC, com mais de 4 anos de experiência direta no setor financeiro, processamento de transações e meios de pagamento.
+        </p>
+        <br>
+        <p class="summary">
+          <strong>Diferenciais que entrego:</strong> Segurança e Autenticação — Implementação de Spring Security, OAuth2 e JWT para proteção de endpoints em múltiplos projetos de produção (Mouts, Compass UOL, Evertec/Sinqia). Qualidade e TDD — Prática de Test-Driven Development com JUnit 5 e Mockito, garantindo cobertura de testes e confiabilidade de código em ambientes de produção (Compass UOL, MJV, Viasoft). CI/CD e DevOps — Configuração e manutenção de pipelines com GitHub Actions e Jenkins, automatizando build, testes e deploy (Evertec, Compass, MJV, Viasoft). Observabilidade — Experiência com ELK Stack (Elasticsearch, Logstash, Kibana) para centralização e análise de logs em produção, com participação na implementação (Mouts). Mentoria e Liderança Técnica — Atuação como mentor técnico de estagiários e Scrum Master na Compass UOL, além de mentor de carreira para desenvolvedores iniciantes.
+        </p>
+        <br>
+        <p class="summary">
+          Combino experiência prática com formação sólida em Engenharia de Software e Matemática, além de MBA em Arquitetura de Microserviços. Apaixonado por tecnologia, aprendizado contínuo e por compartilhar conhecimento com a equipe. Busco desafios como Desenvolvedor Java Sênior, Tech Lead ou Arquiteto de Software, com oportunidades de contribuir arquiteturalmente e mentorar a equipe.
+        </p>
+      </div>
+
+      <!-- EXPERIÊNCIA -->
+      <div class="section">
+        <div class="sec-title"><i class="fa-solid fa-briefcase"></i>Experiência</div>
+
+        <!-- Evertec -->
+        <div class="exp">
+          <div class="exp-hdr">
+            <span class="exp-role">Engenheiro de software sênior</span>
+            <span class="exp-period">julho de 2025 – agosto de 2026 · 1 ano 2 meses</span>
+          </div>
+          <div class="exp-co">Evertec Brasil</div>
+          <div class="exp-ctx">Atuação como Desenvolvedor Java Sênior em time multidisciplinar de 10+ membros (QA, PO, Scrum Master, Tech Lead), com participação direta do cliente nas cerimônias ágeis.</div>
+          <div class="exp-squad">Squad 1 — Sistema Core Bancário AFESP (Agência de Fomento do Estado de São Paulo):</div>
+          <ul class="blist">
+            <li>Desenvolvimento e manutenção de sistema de empréstimos e crédito utilizando Spring Boot e SQL Server, com forte atuação em manutenção de stored procedures complexas</li>
+            <li>Manutenção e evolução de portais web utilizando Angular e React, garantindo experiência integrada para o cliente final</li>
+            <li>Implementação de segurança em endpoints REST com Spring Security e JWT</li>
+            <li>Implementação de features-chave para usabilidade do cliente, impactando diretamente a experiência e eficiência operacional do sistema</li>
+            <li>Atuação em CI/CD com Jenkins, Nexus para gestão de artefatos e versionamento, seguindo processo rigoroso de documentação e acompanhamento para o cliente</li>
+          </ul>
+          <div class="exp-squad">Squad 2 — Sustentação de Sistema Legado AFESP (Agência de Fomento do Estado de São Paulo):</div>
+          <ul class="blist">
+            <li>Manutenção e suporte de aplicação JavaFX com SQL Server, lidando com base de código legada e stored procedures extensas</li>
+            <li>Correção de bugs críticos em produção, garantindo estabilidade e continuidade operacional do sistema</li>
+          </ul>
+          <div class="exp-tech">
+            <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Spring Security (JWT)</span>
+            <span class="tag">JavaFX</span><span class="tag">Angular</span><span class="tag">React</span>
+            <span class="tag">SQL Server</span><span class="tag">Jenkins</span><span class="tag">Nexus</span>
+            <span class="tag">Git</span><span class="tag">Scrum</span>
+          </div>
+        </div>
+
+        <!-- Safra -->
+        <div class="exp">
+          <div class="exp-hdr">
+            <span class="exp-role">Engenheiro de Software (Java)</span>
+            <span class="exp-period">dezembro de 2023 – junho de 2025 · 1 ano 7 meses</span>
+          </div>
+          <div class="exp-co">Safra · Francisco Beltrão, Paraná, Brasil</div>
+          <div class="exp-ctx">Atuação como Desenvolvedor Java Sênior em time multidisciplinar de 10+ membros (Desenvolvedores, QA, PO, Scrum Master, Tech Lead), com participação direta do cliente (Banco Safra) no ciclo de desenvolvimento. Contexto: Projeto SAFRAPAY — sistema de processamento de transações de cartões de crédito, POS, e-commerce e e-wallets, baseado na solução ACI Worldwide (Postilion Realtime) e protocolo ISO 8583.</div>
+          <div class="exp-squad">Principais contribuições:</div>
+          <ul class="blist">
+            <li><strong>Modernização gradual do sistema legado</strong> — Migração cuidadosa da versão Java 7 → 8 → 11, evolindo o código de forma incremental para minimizar impacto em um sistema crítico de transações financeiras em produção</li>
+            <li><strong>Implementação de segurança do zero</strong> — Desenvolvimento de Spring Security com JWT para proteção de endpoints REST, adicionando camada de segurança em sistemas que anteriormente não possuíam</li>
+            <li><strong>Qualidade e testes com BDD</strong> — Introdução de testes automatizados utilizando Cucumber (BDD), JUnit e Mockito, cobrindo regras de negócio críticas de processamento de transações financeiras</li>
+            <li><strong>Ferramenta interna para análise de ISO 8583</strong> — Desenvolvimento de ferramenta própria (script executado no navegador) para captura e análise de dados de transações ISO 8583 em arquivos de texto, agilizando o troubleshooting e debug de transações</li>
+            <li><strong>Otimizações e melhorias contínuas</strong> — Ajustes de código, reestruturação de sistemas legados e implementação de melhorias de performance no processamento de transações de POS, e-commerce e e-wallets</li>
+          </ul>
+          <div class="exp-tech">
+            <span class="tag">Java 7/8/11</span><span class="tag">Spring Boot</span><span class="tag">Spring Security (JWT)</span>
+            <span class="tag">ISO 8583</span><span class="tag">ACI Worldwide (Postilion Realtime)</span>
+            <span class="tag">Cucumber (BDD)</span><span class="tag">JUnit</span><span class="tag">Mockito</span>
+            <span class="tag">JavaScript</span><span class="tag">Git</span><span class="tag">Scrum</span>
+          </div>
+        </div>
+
+        <!-- Compass UOL -->
+        <div class="exp">
+          <div class="exp-hdr">
+            <span class="exp-role">Desenvolvedor Backend Java Sênior</span>
+            <span class="exp-period">janeiro de 2023 – outubro de 2023 · 10 meses</span>
+          </div>
+          <div class="exp-co">Compass UOL · Passo Fundo, RS</div>
+          <div class="exp-ctx">Atuação como Desenvolvedor Java Sênior em projeto de modernização de sistema legado do setor de seguros, com participação ativa em decisões de arquitetura e responsabilidade técnica compartilhada com o Tech Lead.</div>
+          <div class="exp-squad">Projeto Principal — Modernização do Sistema de Seguros (Porto Seguro):</div>
+          <ul class="blist">
+            <li><strong>Modernização arquitetural</strong> — Migração de aplicação legada baseada em integração XML para arquitetura de microsserviços com Spring Boot e Java 17, substituindo acoplamento monolítico por comunicação desacoplada via mensageria</li>
+            <li><strong>Implementação de AWS do zero</strong> — Configuração e integração de SQS (filas), SNS (notificações) e DynamoDB (NoSQL) pelo próprio time, como parte da nova arquitetura — não apenas consumo de infraestrutura pronta</li>
+            <li><strong>Segurança e autenticação</strong> — Implementação de Spring Security com JWT</li>
+            <li><strong>Qualidade com TDD</strong> — Prática de Test-Driven Development com JUnit 5 e Mockito, aplicando Clean Code, SOLID e padrões de projeto no ciclo de desenvolvimento</li>
+            <li><strong>Resiliência e tolerância a falhas</strong> — Utilização de Resilience4j / Circuit Breaker na arquitetura de microsserviços</li>
+            <li><strong>CI/CD</strong> — Atuação com pipelines automatizados via GitHub Actions e Jenkins, incluindo build, testes e deploy com Docker</li>
+            <li><strong>Exposição a Spring Cloud</strong> — Contato com componentes do ecossistema Spring Cloud na arquitetura distribuída</li>
+          </ul>
+          <div class="exp-squad">Mentoria e Liderança Técnica:</div>
+          <ul class="blist">
+            <li><strong>Scrum Master</strong> — Facilitação de cerimônias ágeis (dailies, planning, review, retrospective) em paralelo às atividades de desenvolvimento</li>
+            <li><strong>Mentor técnico de 32 estagiários</strong> — Atuação por mais de 6 meses em programa de treinamento da Compass UOL, onde os melhores pontuados seriam contratados. Responsável por acompanhamento técnico, code review e orientação de carreira — conduzido em paralelo às atividades de desenvolvimento</li>
+          </ul>
+          <div class="exp-tech">
+            <span class="tag">Java 17</span><span class="tag">Spring Boot</span><span class="tag">Spring Security (JWT)</span>
+            <span class="tag">Spring Cloud</span><span class="tag">AWS (SQS, SNS, DynamoDB)</span>
+            <span class="tag">Resilience4j</span><span class="tag">Docker</span><span class="tag">JUnit 5</span>
+            <span class="tag">Mockito</span><span class="tag">TDD</span><span class="tag">Clean Code</span>
+            <span class="tag">SOLID</span><span class="tag">GitHub Actions</span><span class="tag">Jenkins</span><span class="tag">Scrum</span>
+          </div>
+        </div>
+
+        <!-- Nkey -->
+        <div class="exp">
+          <div class="exp-hdr">
+            <span class="exp-role">Desenvolvedor Web FullStack Java Sênior</span>
+            <span class="exp-period">setembro de 2022 – dezembro de 2022 · 4 meses</span>
+          </div>
+          <div class="exp-co">Nkey · Florianópolis, SC</div>
+          <div class="exp-ctx">Atuação como Desenvolvedor FullStack Sênior em contrato de projeto de curto prazo, desenvolvendo sistema interno de gerenciamento de campanhas para as redes TV Record e NSC TV (Santa Catarina).</div>
+          <div class="exp-squad">Principais contribuições:</div>
+          <ul class="blist">
+            <li><strong>Backend com microsserviços</strong> — Desenvolvimento e manutenção de APIs utilizando Spring Boot e arquitetura de microsserviços, com MySQL como banco de dados relacional</li>
+            <li><strong>Processamento assíncrono</strong> — Implementação de RabbitMQ para filas e processamento assíncrono de tarefas, garantindo desacoplamento entre serviços e escalabilidade</li>
+            <li><strong>Cache distribuído</strong> — Utilização de Redis para otimização de performance e cache de dados</li>
+            <li><strong>Frontend moderno</strong> — Desenvolvimento de interfaces utilizando Angular, React.js e Next.js, atuando como FullStack de ponta a ponta</li>
+            <li><strong>Containerização</strong> — Uso de Docker para padronização e deploy dos serviços</li>
+          </ul>
+          <div class="exp-tech">
+            <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">microsserviços</span>
+            <span class="tag">Angular</span><span class="tag">React.js</span><span class="tag">Next.js</span>
+            <span class="tag">MySQL</span><span class="tag">RabbitMQ</span><span class="tag">Redis</span><span class="tag">Docker</span>
+          </div>
+        </div>
+
+        <!-- Mouts TI -->
+        <div class="exp">
+          <div class="exp-hdr">
+            <span class="exp-role">Mouts TI · 1 ano 10 meses</span>
+            <span class="exp-period"></span>
+          </div>
+          <div class="exp-co"></div>
+
+          <div class="exp-squad">Analista/Desenvolvedor de BI · agosto de 2021 – dezembro de 2022 · 1 ano 5 meses · São Paulo, Brasil</div>
+          <div class="exp-ctx">Atuação como Analista/Desenvolvedor de BI em paralelo ao cargo de Desenvolvedor Java, trabalhando em projeto distinto no período noturno. (Mouts TI — cooperativa de trabalho).</div>
+          <ul class="blist">
+            <li><strong>Integração de dados com Pentaho</strong> — Desenvolvimento de sistemas de ETL (Extract, Transform, Load) utilizando Pentaho Data Integration, garantindo fluxo e qualidade das informações para análise de Business Intelligence</li>
+            <li><strong>SQL Server</strong> — Modelagem e manipulação de dados em banco relacional, com criação de queries e procedures para suporte às análises de BI</li>
+            <li><strong>Qualidade de dados</strong> — Garantia de integridade e disponibilidade das informações para tomada de decisão gerencial</li>
+          </ul>
+          <div class="exp-tech">
+            <span class="tag">Pentaho Data Integration (ETL)</span><span class="tag">SQL Server</span><span class="tag">Business Intelligence</span>
+          </div>
+
+          <div class="exp-squad" style="margin-top:10px">Desenvolvedor de aplicativos java sênior · março de 2021 – setembro de 2022 · 1 ano 7 meses · Blumenau, SC</div>
+          <div class="exp-ctx">Atuação como Desenvolvedor Java Sênior em sistema de integração de grande porte para a empresa DBR, responsável pelo marketplace de moda Posthaus. (Atuação em paralelo ao cargo de Analista de BI na mesma cooperativa — Mouts TI é cooperativa de trabalho).</div>
+          <ul class="blist">
+            <li><strong>Integração de sistemas com Apache Camel</strong> — Desenvolvimento de rotas de integração entre sistemas internos e sistemas de clientes, incluindo migração e transformação de dados entre aplicações do ecossistema do marketplace Posthaus</li>
+            <li><strong>Backend com Spring Boot</strong> — Desenvolvimento e manutenção de APIs e serviços utilizando Java 8+, Spring Boot e Oracle DB</li>
+            <li><strong>Mensageria com RabbitMQ</strong> — Processamento assíncrono de mensagens para desacoplamento entre serviços de integração</li>
+            <li><strong>Segurança de endpoints</strong> — Implementação de Spring Security com JWT para proteção de APIs REST</li>
+            <li><strong>Observabilidade com ELK Stack</strong> — Participação na implementação do ELK Stack (Elasticsearch, Logstash, Kibana) para centralização e monitoramento de logs dos sistemas em produção, facilitando troubleshooting e diagnóstico de incidentes</li>
+          </ul>
+          <div class="exp-tech">
+            <span class="tag">Java 8+</span><span class="tag">Spring Boot</span><span class="tag">Spring Security (JWT)</span>
+            <span class="tag">Apache Camel</span><span class="tag">Oracle DB</span><span class="tag">RabbitMQ</span>
+            <span class="tag">ELK Stack</span>
+          </div>
+        </div>
+
+        <!-- VIASOFT -->
+        <div class="exp">
+          <div class="exp-hdr">
+            <span class="exp-role">Analista Programador FullStack Java/Angular</span>
+            <span class="exp-period">novembro de 2019 – abril de 2021 · 1 ano 6 meses</span>
+          </div>
+          <div class="exp-co">VIASOFT Softwares Empresariais · Paraná</div>
+          <div class="exp-ctx">Atuação como Desenvolvedor FullStack em time multidisciplinar de 10+ membros (Devs, QA, DBA, Tech Lead), no desenvolvimento do Nimitz — sistema empresarial complexo construído do zero com arquitetura de microsserviços.</div>
+          <div class="exp-squad">Principais contribuições:</div>
+          <ul class="blist">
+            <li><strong>Desenvolvimento de microsserviços com Spring Cloud</strong> — Implementação de novos microsserviços seguindo padrões arquiteturais já estabelecidos, utilizando Spring Boot, Spring Cloud e Eureka para descoberta e registro de serviços</li>
+            <li><strong>Módulo Contábil e Financeiro</strong> — Atuação no desenvolvimento do módulo de contabilidade e finanças do sistema empresarial, lidando com regras de negócio complexas e integração entre serviços</li>
+            <li><strong>TDD e qualidade de código</strong> — Prática de Test-Driven Development com JUnit e Mockito, garantindo cobertura de testes e confiabilidade desde o início do desenvolvimento</li>
+            <li><strong>FullStack com Angular</strong> — Desenvolvimento de interfaces frontend em Angular, atuando de ponta a ponta no ciclo de desenvolvimento</li>
+            <li><strong>CI/CD</strong> — Atuação com pipelines automatizados via GitHub Actions e Jenkins, incluindo build, testes e deploy</li>
+            <li><strong>Bancos de dados</strong> — Modelagem e manipulação de dados utilizando MariaDB e MySQL</li>
+          </ul>
+          <div class="exp-tech">
+            <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Spring Cloud</span>
+            <span class="tag">Eureka</span><span class="tag">microsserviços</span><span class="tag">Angular</span>
+            <span class="tag">MariaDB</span><span class="tag">MySQL</span><span class="tag">JUnit</span>
+            <span class="tag">Mockito</span><span class="tag">TDD</span><span class="tag">GitHub Actions</span>
+            <span class="tag">Jenkins</span><span class="tag">Scrum</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- HISTÓRICO ANTERIOR -->
+      <div class="section">
+        <div class="sec-title"><i class="fa-solid fa-clock-rotate-left"></i>Histórico Anterior</div>
+
+        <!-- Beatech -->
+        <div class="hist">
+          <div class="hist-role">Beatech Solutions Technology · 4 anos 2 meses</div>
+          <div class="hist-co"></div>
+          <div class="hist-per">Desenvolvedor Java · janeiro de 2016 – fevereiro de 2020 · 4 anos 2 meses · Pato Branco, PR</div>
+          <div class="hist-desc">Atuação como Desenvolvedor Java Freelancer através de CNPJ próprio (Beatech Solutions), com Java e Spring Boot como stack principal. Em paralelo, prestava serviços de desenvolvimento front-end e WordPress para diversos clientes. Desenvolvimento de APIs REST; atuação fullstack ponta a ponta; gestão de projetos como freelancer. Tecnologias: Java, Spring Boot, APIs REST, SQL.</div>
+          <div class="hist-per" style="margin-top:4px">Desenvolvedor WordPress · agosto de 2018 – março de 2019 · 8 meses · Pato Branco, PR</div>
+          <div class="hist-desc">Desenvolvimento de temas e plugins WordPress; CMS e manutenção de sites em WordPress e Joomla. Tecnologias: WordPress, Joomla, PHP, HTML5, CSS3.</div>
+          <div class="hist-per" style="margin-top:4px">Desenvolvedor de front-end · janeiro de 2018 – março de 2019 · 1 ano 3 meses · Pato Branco, PR</div>
+          <div class="hist-desc">Criação de interfaces utilizando HTML5, CSS3, JavaScript e Angular. Tecnologias: HTML5, CSS3, JavaScript, Angular.</div>
+        </div>
+
+        <!-- Bitz -->
+        <div class="hist">
+          <div class="hist-role">Desenvolvedor WEB FullStack Pleno</div>
+          <div class="hist-co">Bitz Softwares</div>
+          <div class="hist-per">abril de 2019 – outubro de 2019 · 7 meses · Pato Branco, PR</div>
+          <div class="hist-desc">Projeto 1 — Sistema de Hotelaria (PHP): desenvolvimento com PHP (Symfony), VueJS e PostgreSQL, atuação fullstack de ponta a ponta. Projeto 2 — Sistema de Condomínios (Java Legado): manutenção em Java 8, JSF e PrimeFaces. Suporte pontual a sistema em Delphi. Tecnologias: PHP (Symfony), VueJS, JavaScript, PostgreSQL, Java 8, JSF, PrimeFaces, Spring MVC, Spring Boot, Node.js, Angular, Delphi.</div>
+        </div>
+
+        <!-- Softfocus -->
+        <div class="hist">
+          <div class="hist-role">Desenvolvedor Web/Java</div>
+          <div class="hist-co">Softfocus</div>
+          <div class="hist-per">março de 2018 – junho de 2018 · 4 meses · Pato Branco, PR</div>
+          <div class="hist-desc">Modernização de sistema de empréstimos para a Sicredi: migração Struts 2 → Spring Boot em Kotlin, TDD com JUnit, frontend com Ext JS. Tecnologias: Java, Kotlin, Spring Boot, Struts 2, JUnit, TDD, Ext JS, JavaScript.</div>
+        </div>
+
+        <!-- Salt Systems -->
+        <div class="hist">
+          <div class="hist-role">Desenvolvedor de software web</div>
+          <div class="hist-co">Salt Systems</div>
+          <div class="hist-per">junho de 2017 – outubro de 2017 · 5 meses · Pato Branco, PR</div>
+          <div class="hist-desc">Desenvolvimento de sistema de créditos para empresas de telefonia. Tecnologias: PHP (Symfony), JavaScript.</div>
+        </div>
+
+        <!-- SAG -->
+        <div class="hist">
+          <div class="hist-role">Analista de Desenvolvimento de Sistemas</div>
+          <div class="hist-co">SAG Software Agroindustrial</div>
+          <div class="hist-per">agosto de 2016 – maio de 2017 · 10 meses · Pato Branco, PR</div>
+          <div class="hist-desc">ERP agroindustrial: suporte técnico ao cliente com transição para desenvolvimento. Forte aprendizado em SQL Server e Oracle. Modernização da página institucional com PHP e WordPress. Tecnologias: PHP, WordPress, SQL Server, Oracle.</div>
+        </div>
+
+        <!-- Patoflex -->
+        <div class="hist">
+          <div class="hist-role">Analista de Desenvolvimento de Sistemas</div>
+          <div class="hist-co">Patoflex Soluções em Automação e Etiquetas</div>
+          <div class="hist-per">abril de 2016 – julho de 2016 · 4 meses · Pato Branco, Paraná, Brasil</div>
+        </div>
+
+        <!-- La Salle -->
+        <div class="hist">
+          <div class="hist-role">Professor de Matemática</div>
+          <div class="hist-co">Colégio La Salle</div>
+          <div class="hist-per">janeiro de 2016 – fevereiro de 2016 · 2 meses · Pato Branco e Região, Brasil</div>
+        </div>
+
+        <!-- C&R -->
+        <div class="hist">
+          <div class="hist-role">Monitor</div>
+          <div class="hist-co">C & R Fast Food LTDA</div>
+          <div class="hist-per">novembro de 2015 – fevereiro de 2016 · 4 meses · Pato Branco, Paraná, Brasil</div>
+        </div>
+
+        <!-- Secretaria de Saúde -->
+        <div class="hist">
+          <div class="hist-role">Assistente Administrativo</div>
+          <div class="hist-co">Secretaria de Saude do Estado do Amazonas</div>
+          <div class="hist-per">maio de 2014 – setembro de 2015 · 1 ano 5 meses · Novo Aripuanã, AM</div>
+        </div>
+
+        <!-- CETAM -->
+        <div class="hist">
+          <div class="hist-role">Instrutor de informática</div>
+          <div class="hist-co">Centro de Educação Tecnológica do Amazonas – CETAM</div>
+          <div class="hist-per">janeiro de 2010 – setembro de 2015 · 5 anos 9 meses · Novo Aripuanã, AM</div>
+          <div class="hist-desc">Instrutor de Informática Básica e Avançada em Escolas Públicas do Estado do Amazonas.</div>
+        </div>
+
+        <!-- Prefeitura Gabinete -->
+        <div class="hist">
+          <div class="hist-role">ENCARREGADO DE CONTROLE DO GABINETE</div>
+          <div class="hist-co">Prefeitura Municipal de Novo Aripuanã – AM</div>
+          <div class="hist-per">agosto de 2013 – janeiro de 2015 · 1 ano 6 meses · Novo Aripuanã, AM</div>
+        </div>
+
+        <!-- Prefeitura 3 anos 10 meses -->
+        <div class="hist">
+          <div class="hist-role">Prefeitura Municipal de Novo Aripuanã – AM · 3 anos 10 meses</div>
+          <div class="hist-per">ENCARREGADO DE MATERIAL E PATRIMÔNIO · outubro de 2010 – outubro de 2012 · 2 anos 1 mês · Novo Aripuanã, AM</div>
+          <div class="hist-per">DIRETOR DE DEPARTAMENTO DE FISCALIZAÇÃO SANITÁRIA · janeiro de 2009 – outubro de 2010 · 1 ano 10 meses · Novo Aripuanã, AM</div>
+        </div>
+
+        <!-- Unafisco -->
+        <div class="hist">
+          <div class="hist-role">Técnico em Telecomunicações e Informática</div>
+          <div class="hist-co">Unafisco Nacional</div>
+          <div class="hist-per">janeiro de 2008 – junho de 2008 · 6 meses · Brasília e Região, Brasil</div>
+          <div class="hist-desc">Manutenção de páginas web, aplicações e equipamentos de telecomunicações e informática.</div>
+        </div>
+
+        <!-- Prefeitura Saúde Comunitária -->
+        <div class="hist">
+          <div class="hist-role">ASSISTENTE OPERACIONAL DE SAÚDE COMUNITÁRIA</div>
+          <div class="hist-co">Prefeitura Municipal de Novo Aripuanã – AM</div>
+          <div class="hist-per">setembro de 2002 – dezembro de 2004 · 2 anos 4 meses · Novo Aripuanã, AM</div>
+        </div>
+
+        <!-- Prefeitura 1 ano 9 meses -->
+        <div class="hist">
+          <div class="hist-role">Prefeitura Municipal de Novo Aripuanã-AM · 1 ano 9 meses</div>
+          <div class="hist-per">Digitador · outubro de 2001 – setembro de 2002 · 1 ano · Novo Aripuanã-AM</div>
+          <div class="hist-desc">Digitador de Cadastramento de Programas Sociais - Cadastro Único.</div>
+          <div class="hist-per">Assistente pessoal de diretor · janeiro de 2001 – setembro de 2001 · 9 meses · Novo Aripuanã-AM</div>
+          <div class="hist-desc">Assistente do Secretário Municipal de Administração.</div>
+        </div>
+
+      </div>
+
+      <!-- FORMAÇÃO -->
+      <div class="section">
+        <div class="sec-title"><i class="fa-solid fa-graduation-cap"></i>Formação Acadêmica</div>
+
+        <div class="edu">
+          <div class="edu-degree">Pós-graduação Lato Sensu – MBA, Arquitetura em Microserviços</div>
+          <div class="edu-inst">UNOPAR – Universidade Norte do Paraná</div>
+          <div class="edu-period">outubro de 2024 – fevereiro de 2025</div>
+        </div>
+
+        <div class="edu">
+          <div class="edu-degree">Bacharelado em Engenharia de Software</div>
+          <div class="edu-inst">UNOPAR – Universidade Norte do Paraná</div>
+          <div class="edu-period">janeiro de 2022 – janeiro de 2026</div>
+        </div>
+
+        <div class="edu">
+          <div class="edu-degree">Engenharia de Software – MBA</div>
+          <div class="edu-inst">Faculdade Metropolitana</div>
+          <div class="edu-period">2020 – 2021</div>
+        </div>
+
+        <div class="edu">
+          <div class="edu-degree">Licentiate degree, Matemática</div>
+          <div class="edu-inst">Universidade Federal do Amazonas</div>
+          <div class="edu-period">2010 – 2015</div>
+        </div>
+
+        <div class="edu">
+          <div class="edu-degree">Especialista em Pedagogia Empresarial e Educação Corporativa, Desenvolvimento de Recursos Humanos</div>
+          <div class="edu-inst">UNINTER Centro Universitário Internacional</div>
+          <div class="edu-period">2017 – 2017</div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>
