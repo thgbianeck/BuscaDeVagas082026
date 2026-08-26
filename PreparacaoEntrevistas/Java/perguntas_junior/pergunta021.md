@@ -76,7 +76,8 @@ public class ProcessadorMisto {
 }
 ```
 
-**Como o candidato deve responder:**  
+**Como o candidato deve responder:**
+  
 - Explicar que Generics garantem type safety em compile-time.
 - Mostrar que raw types aceitam qualquer objeto e erros só aparecem em runtime.
 - Propor refatoração: tipar a lista como `List<String>` e remover casts.
