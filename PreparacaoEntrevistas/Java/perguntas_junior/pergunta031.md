@@ -20,6 +20,7 @@ Compreensão de autoboxing e unboxing, conhecimento do cache de wrappers Integer
 **Autoboxing** é a conversão automática de um tipo primitivo para seu wrapper correspondente (`int` → `Integer`). **Unboxing** é o inverso (`Integer` → `int`). O compilador insere essas conversões automaticamente.
 
 No código `Integer pontos = 100; pontos += 50;`:
+
 1. `Integer pontos = 100;` → autoboxing: `Integer.valueOf(100)` cria um objeto `Integer`.
 2. `pontos += 50;` → unboxing: `pontos.intValue()` extrai o valor `int`, soma 50, e depois autoboxing novamente: `Integer.valueOf(150)`.
 
@@ -43,6 +44,7 @@ Pense no cache de `Integer` como uma gaveta com números pré-impressos de -128 
 Em um sistema de fidelidade, dois clientes têm 150 pontos cada um. Se o sistema comparar os pontos com `==` em vez de `.equals()`, o sistema pode dizer que os pontos são diferentes mesmo sendo iguais, causando bugs onde bônus não são aplicados corretamente.
 
 **Exemplo de código:**  
+
 ```java
 public class AutoboxingDemo {
     public void demonstrar() {
@@ -91,6 +93,7 @@ public class AutoboxingDemo {
 ```
 
 **Como o candidato deve responder:**  
+
 - Explicar autoboxing (primitivo → wrapper) e unboxing (wrapper → primitivo) como conversões automáticas.
 - Mostrar que `+=` faz unboxing, soma e re-autoboxing.
 - Explicar o cache de Integer (-128 a 127) e por que `==` funciona nesse range.
@@ -114,6 +117,7 @@ public class AutoboxingDemo {
 | 5 | Responde com profundidade, apresenta trade-offs, boas práticas e experiência real |
 
 **Perguntas de aprofundamento:**
+
 1. Por que o Java mantém esse cache de Integer — qual é a justificativa de design?
 2. Outros wrappers (`Double`, `Float`) têm cache? Por que não?
 3. Como o autoboxing pode causar `NullPointerException`?
