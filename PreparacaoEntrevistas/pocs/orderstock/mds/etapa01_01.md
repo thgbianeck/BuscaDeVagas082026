@@ -461,7 +461,7 @@ target/
 
 ## 26. README inicial (`inventory-service/README.md`)
 
-~~~markdown
+```markdown
 # inventory-service
 
 Microsserviço responsável pelo gerenciamento de estoque na POC OrderStock.
@@ -495,7 +495,7 @@ mvn test
 ~~~bash
 curl -i http://localhost:8081/api/inventory/health
 ~~~
-~~~
+```
 
 ## 27. Erros mais comuns
 
