@@ -25,6 +25,14 @@ class HealthControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.service").value("inventory-service"))
-                .andExpect(jsonPath("$.status").value("UP"));
+                .andExpect(jsonPath("$.status").value("UP"))
+                .andExpect(jsonPath("$.dataHora").exists());
+    }
+
+    @Test
+    @DisplayName("GET /api/inventory/naoexiste should return 404 Not Found")
+    void shouldReturnNotFoundForNonExistentPath() throws Exception {
+        mockMvc.perform(get("/api/inventory/naoexiste"))
+                .andExpect(status().isNotFound());
     }
 }
