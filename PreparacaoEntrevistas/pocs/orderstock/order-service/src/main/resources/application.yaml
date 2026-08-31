@@ -4,3 +4,9 @@ server:
 spring:
   application:
     name: order-service
+
+inventory-service:
+  base-url: http://localhost:8081
+  timeout:
+    connect: 2s
+    read: 3s

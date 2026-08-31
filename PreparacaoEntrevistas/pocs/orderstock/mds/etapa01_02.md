@@ -43,27 +43,27 @@ O `inventory-service` já possui:
 - endpoint `GET /api/inventory/health`;
 - resposta JSON:
 
-~~~json
+```json
 {
   "service": "inventory-service",
   "status": "UP"
 }
-~~~
+```
 
 A POC utiliza um monorepo:
 
-~~~text
+```text
 orderstock/
 ├── inventory-service/
 ├── order-service/
 └── api-gateway/
-~~~
+```
 
 Nesta etapa, o novo serviço será criado em:
 
-~~~text
+```text
 order-service/
-~~~
+```
 
 Ele utilizará a porta `8082`, evitando conflito com o `inventory-service`.
 
@@ -122,7 +122,7 @@ A comunicação é síncrona quando o serviço solicitante:
 
 Fluxo desta etapa:
 
-~~~mermaid
+```mermaid
 sequenceDiagram
     participant Client as Cliente
     participant Order as order-service
@@ -132,7 +132,7 @@ sequenceDiagram
     Order->>Inventory: GET /api/inventory/health
     Inventory-->>Order: HTTP 200 + JSON
     Order-->>Client: HTTP 200 + JSON simplificado
-~~~
+```
 
 ## 3.5 Vantagens da comunicação HTTP síncrona
 
@@ -168,13 +168,13 @@ Nesta etapa, o `order-service` deverá:
 
 Exemplo:
 
-~~~json
+```json
 {
   "dependency": "inventory-service",
   "status": "DOWN",
   "message": "Inventory service is unavailable"
 }
-~~~
+```
 
 ## 3.8 O que é acoplamento entre serviços
 
@@ -271,7 +271,7 @@ Em uma aplicação real, essas decisões poderiam mudar conforme:
 
 # 4. Arquitetura atualizada
 
-~~~mermaid
+```mermaid
 flowchart LR
     Client[Cliente / curl / Postman] --> OrderLocal[order-service]
     Client --> InventoryLocal[inventory-service]
@@ -285,11 +285,11 @@ flowchart LR
 
     InventoryLocal --> InventoryController[HealthController]
     InventoryController --> InventoryResponse[Resposta JSON]
-~~~
+```
 
 ## 4.1 Fluxo de sucesso
 
-~~~mermaid
+```mermaid
 sequenceDiagram
     participant C as Cliente
     participant OC as Order HealthController
@@ -305,11 +305,11 @@ sequenceDiagram
     IC-->>S: InventoryHealthResponse
     S-->>OC: DependencyHealthResponse
     OC-->>C: 200 + JSON
-~~~
+```
 
 ## 4.2 Fluxo de indisponibilidade
 
-~~~mermaid
+```mermaid
 sequenceDiagram
     participant C as Cliente
     participant OC as Order HealthController
@@ -325,7 +325,7 @@ sequenceDiagram
     IC-->>S: InventoryServiceUnavailableException
     S-->>OC: InventoryServiceUnavailableException
     OC-->>C: 503 + JSON status DOWN
-~~~
+```
 
 ---
 
@@ -389,7 +389,7 @@ Isso é aceitável para esta POC, mas em produção devem ser analisados:
 
 # 6. Estrutura esperada dos arquivos
 
-~~~mermaid
+```mermaid
 graph TD
     Root["orderstock/"] --> Order["order-service/"]
 
@@ -420,11 +420,11 @@ graph TD
     Test --> TestJava["java/com/orderstock/order/"]
     TestJava --> ControllerTest["controller/HealthControllerTest.java"]
     TestJava --> ClientTest["client/InventoryClientTest.java"]
-~~~
+```
 
 Estrutura textual:
 
-~~~text
+```text
 order-service/
 ├── pom.xml
 ├── README.md
@@ -456,7 +456,7 @@ order-service/
                 │   └── InventoryClientTest.java
                 └── controller/
                     └── HealthControllerTest.java
-~~~
+```
 
 ---
 
@@ -464,7 +464,7 @@ order-service/
 
 A partir da raiz do monorepo:
 
-~~~bash
+```bash
 mkdir order-service
 cd order-service
 
@@ -477,11 +477,11 @@ mkdir -p src/main/java/com/orderstock/order/service
 mkdir -p src/main/resources
 mkdir -p src/test/java/com/orderstock/order/client
 mkdir -p src/test/java/com/orderstock/order/controller
-~~~
+```
 
 No Windows PowerShell:
 
-~~~powershell
+```powershell
 New-Item -ItemType Directory -Force -Path `
 src/main/java/com/orderstock/order/client, `
 src/main/java/com/orderstock/order/config, `
@@ -492,7 +492,7 @@ src/main/java/com/orderstock/order/service, `
 src/main/resources, `
 src/test/java/com/orderstock/order/client, `
 src/test/java/com/orderstock/order/controller
-~~~
+```
 
 ---
 
@@ -500,7 +500,7 @@ src/test/java/com/orderstock/order/controller
 
 ## 8.1 `order-service/pom.xml`
 
-~~~xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -551,7 +551,7 @@ src/test/java/com/orderstock/order/controller
     </build>
 
 </project>
-~~~
+```
 
 ### Explicação
 
@@ -569,7 +569,7 @@ A versão do Spring Boot deve ser igual à utilizada no `inventory-service`.
 
 ## 8.2 `OrderServiceApplication.java`
 
-~~~java
+```java
 package com.orderstock.order;
 
 import org.springframework.boot.SpringApplication;
@@ -582,20 +582,20 @@ public class OrderServiceApplication {
         SpringApplication.run(OrderServiceApplication.class, args);
     }
 }
-~~~
+```
 
 Essa classe inicializa o Spring Boot e ativa o component scan nos subpacotes de `com.orderstock.order`.
 
 ## 8.3 `application.properties`
 
-~~~properties
+```properties
 spring.application.name=order-service
 server.port=8082
 
 inventory-service.base-url=http://localhost:8081
 inventory-service.timeout.connect=2s
 inventory-service.timeout.read=3s
-~~~
+```
 
 A porta `8082` evita conflito com o `inventory-service`, que utiliza a porta `8081`.
 
@@ -603,23 +603,23 @@ A URL do `inventory-service` foi externalizada para permitir alteração sem rec
 
 ## 8.4 `HealthResponse.java`
 
-~~~java
+```java
 package com.orderstock.order.dto;
 
 public record HealthResponse(String service, String status) {
 }
-~~~
+```
 
 Esse DTO representa o health check local do `order-service`.
 
 ## 8.5 `InventoryHealthResponse.java`
 
-~~~java
+```java
 package com.orderstock.order.dto;
 
 public record InventoryHealthResponse(String service, String status) {
 }
-~~~
+```
 
 Esse DTO representa a resposta recebida do `inventory-service`.
 
@@ -627,7 +627,7 @@ Mesmo possuindo os mesmos campos neste momento, o DTO pertence ao `order-service
 
 ## 8.6 `DependencyHealthResponse.java`
 
-~~~java
+```java
 package com.orderstock.order.dto;
 
 public record DependencyHealthResponse(
@@ -636,31 +636,31 @@ public record DependencyHealthResponse(
         String message
 ) {
 }
-~~~
+```
 
 Resposta quando a dependência está disponível:
 
-~~~json
+```json
 {
   "dependency": "inventory-service",
   "status": "UP",
   "message": null
 }
-~~~
+```
 
 Resposta quando a dependência está indisponível:
 
-~~~json
+```json
 {
   "dependency": "inventory-service",
   "status": "DOWN",
   "message": "Inventory service is unavailable"
 }
-~~~
+```
 
 ## 8.7 `InventoryServiceUnavailableException.java`
 
-~~~java
+```java
 package com.orderstock.order.exception;
 
 public class InventoryServiceUnavailableException extends RuntimeException {
@@ -676,13 +676,13 @@ public class InventoryServiceUnavailableException extends RuntimeException {
         super(message, cause);
     }
 }
-~~~
+```
 
 Essa exceção representa uma falha controlada na comunicação com o `inventory-service`.
 
 ## 8.8 `RestClientConfig.java`
 
-~~~java
+```java
 package com.orderstock.order.config;
 
 import java.time.Duration;
@@ -716,7 +716,7 @@ public class RestClientConfig {
                 .build();
     }
 }
-~~~
+```
 
 Essa classe:
 
@@ -729,7 +729,7 @@ O Controller não precisa saber como o cliente foi configurado.
 
 ## 8.9 `InventoryClient.java`
 
-~~~java
+```java
 package com.orderstock.order.client;
 
 import com.orderstock.order.dto.InventoryHealthResponse;
@@ -775,7 +775,7 @@ public class InventoryClient {
         }
     }
 }
-~~~
+```
 
 O `InventoryClient`:
 
@@ -787,7 +787,7 @@ O `InventoryClient`:
 
 ## 8.10 `InventoryDependencyService.java`
 
-~~~java
+```java
 package com.orderstock.order.service;
 
 import com.orderstock.order.client.InventoryClient;
@@ -816,7 +816,7 @@ public class InventoryDependencyService {
         );
     }
 }
-~~~
+```
 
 A camada Service:
 
@@ -827,7 +827,7 @@ A camada Service:
 
 ## 8.11 `HealthController.java`
 
-~~~java
+```java
 package com.orderstock.order.controller;
 
 import com.orderstock.order.dto.DependencyHealthResponse;
@@ -876,7 +876,7 @@ public class HealthController {
         }
     }
 }
-~~~
+```
 
 ## 8.12 Responsabilidade do Controller
 
@@ -901,44 +901,44 @@ Ele não deve:
 
 ## 9.1 Health check local
 
-~~~http
+```http
 GET /api/orders/health
-~~~
+```
 
 Resposta:
 
-~~~json
+```json
 {
   "service": "order-service",
   "status": "UP"
 }
-~~~
+```
 
 ## 9.2 Health check da dependência
 
-~~~http
+```http
 GET /api/orders/dependencies/inventory/health
-~~~
+```
 
 Resposta com sucesso:
 
-~~~json
+```json
 {
   "dependency": "inventory-service",
   "status": "UP",
   "message": null
 }
-~~~
+```
 
 Resposta quando o serviço está indisponível:
 
-~~~json
+```json
 {
   "dependency": "inventory-service",
   "status": "DOWN",
   "message": "Inventory service is unavailable"
 }
-~~~
+```
 
 ## 9.3 Por que utilizar GET
 
@@ -985,15 +985,15 @@ Portanto:
 
 A URL pode variar entre ambientes:
 
-~~~properties
+```properties
 inventory-service.base-url=http://localhost:8081
-~~~
+```
 
 Em Docker Compose, por exemplo, poderia ser:
 
-~~~properties
+```properties
 inventory-service.base-url=http://inventory-service:8081
-~~~
+```
 
 Em outro ambiente, poderia apontar para um domínio ou Service Discovery.
 
@@ -1016,15 +1016,15 @@ A URL deve ser configuração, não código, porque pode mudar entre:
 
 Fora de containers:
 
-~~~text
+```text
 localhost = a própria máquina
-~~~
+```
 
 Dentro de um container:
 
-~~~text
+```text
 localhost = o próprio container
-~~~
+```
 
 Portanto, se o `order-service` estiver em um container, `localhost:8081` não apontará automaticamente para outro container.
 
@@ -1042,17 +1042,17 @@ Sem timeout, o `order-service` poderia ficar aguardando indefinidamente uma resp
 
 É o tempo máximo para estabelecer a conexão:
 
-~~~properties
+```properties
 inventory-service.timeout.connect=2s
-~~~
+```
 
 ## 11.3 Read timeout
 
 É o tempo máximo para aguardar dados depois que a conexão foi estabelecida:
 
-~~~properties
+```properties
 inventory-service.timeout.read=3s
-~~~
+```
 
 ## 11.4 Valores escolhidos
 
@@ -1081,11 +1081,11 @@ Valores reais dependem de:
 
 Arquivo:
 
-~~~text
+```text
 src/test/java/com/orderstock/order/controller/HealthControllerTest.java
-~~~
+```
 
-~~~java
+```java
 package com.orderstock.order.controller;
 
 import com.orderstock.order.dto.DependencyHealthResponse;
@@ -1174,7 +1174,7 @@ class HealthControllerTest {
                         .value("Inventory service is unavailable"));
     }
 }
-~~~
+```
 
 ## 12.2 O que esse teste valida
 
@@ -1201,11 +1201,11 @@ O teste não valida:
 
 Arquivo:
 
-~~~text
+```text
 src/test/java/com/orderstock/order/client/InventoryClientTest.java
-~~~
+```
 
-~~~java
+```java
 package com.orderstock.order.client;
 
 import com.orderstock.order.dto.InventoryHealthResponse;
@@ -1325,7 +1325,7 @@ class InventoryClientTest {
         );
     }
 }
-~~~
+```
 
 ## 12.4 O que o teste unitário valida
 
@@ -1370,11 +1370,11 @@ Posteriormente, poderemos utilizar:
 
 Arquivo:
 
-~~~text
+```text
 order-service/README.md
-~~~
+```
 
-~~~markdown
+```markdown
 # order-service
 
 Microsserviço responsável pelo contexto de pedidos da POC OrderStock.
@@ -1415,77 +1415,77 @@ O inventory-service utiliza a porta `8081`.
 
 ## Configuração
 
-~~~properties
+```properties
 server.port=8082
 inventory-service.base-url=http://localhost:8081
 inventory-service.timeout.connect=2s
 inventory-service.timeout.read=3s
-~~~
+```
 
 ## Como executar
 
-~~~bash
+```bash
 mvn spring-boot:run
-~~~
+```
 
 ## Como executar os testes
 
-~~~bash
+```bash
 mvn clean test
-~~~
+```
 
 ## Health check local
 
-~~~http
+```http
 GET /api/orders/health
-~~~
+```
 
 Exemplo:
 
-~~~bash
+```bash
 curl -i http://localhost:8082/api/orders/health
-~~~
+```
 
 Resposta:
 
-~~~json
+```json
 {
   "service": "order-service",
   "status": "UP"
 }
-~~~
+```
 
 ## Health check do inventory-service
 
-~~~http
+```http
 GET /api/orders/dependencies/inventory/health
-~~~
+```
 
 Exemplo:
 
-~~~bash
+```bash
 curl -i http://localhost:8082/api/orders/dependencies/inventory/health
-~~~
+```
 
 Quando o inventory-service estiver disponível:
 
-~~~json
+```json
 {
   "dependency": "inventory-service",
   "status": "UP",
   "message": null
 }
-~~~
+```
 
 Quando o inventory-service estiver indisponível:
 
-~~~json
+```json
 {
   "dependency": "inventory-service",
   "status": "DOWN",
   "message": "Inventory service is unavailable"
 }
-~~~
+```
 
 Nesse caso, o order-service retorna HTTP 503.
 
@@ -1510,7 +1510,7 @@ Nesse caso, o order-service retorna HTTP 503.
 - adicionar persistência;
 - adicionar testes de integração;
 - avaliar resiliência e observabilidade.
-~~~
+```
 
 ---
 
@@ -1518,11 +1518,11 @@ Nesse caso, o order-service retorna HTTP 503.
 
 Arquivo:
 
-~~~text
+```text
 orderstock/README.md
-~~~
+```
 
-~~~markdown
+```markdown
 # OrderStock
 
 POC didática de um sistema de pedidos e estoque utilizando Java, Spring Boot e arquitetura de microsserviços.
@@ -1549,41 +1549,41 @@ POC didática de um sistema de pedidos e estoque utilizando Java, Spring Boot e 
 
 Terminal 1:
 
-~~~bash
+```bash
 cd inventory-service
 mvn spring-boot:run
-~~~
+```
 
 Terminal 2:
 
-~~~bash
+```bash
 cd order-service
 mvn spring-boot:run
-~~~
+```
 
 ## Testes
 
-~~~bash
+```bash
 cd inventory-service
 mvn clean test
 
 cd ../order-service
 mvn clean test
-~~~
+```
 
 ## Integração atual
 
 O order-service consulta:
 
-~~~http
+```http
 GET http://localhost:8081/api/inventory/health
-~~~
+```
 
 Por meio de:
 
-~~~http
+```http
 GET http://localhost:8082/api/orders/dependencies/inventory/health
-~~~
+```
 
 ## Decisões atuais
 
@@ -1595,7 +1595,7 @@ GET http://localhost:8082/api/orders/dependencies/inventory/health
 - Sem Lombok;
 - Comunicação HTTP síncrona;
 - URLs configuradas externamente.
-~~~
+```
 
 ---
 
@@ -1605,46 +1605,46 @@ GET http://localhost:8082/api/orders/dependencies/inventory/health
 
 A partir da raiz:
 
-~~~bash
+```bash
 git status
 git add order-service/pom.xml
 git commit -m "feat(order-service): create initial Spring Boot service"
-~~~
+```
 
 Health check:
 
-~~~bash
+```bash
 git add order-service/src/main
 git commit -m "feat(order-service): add local health check endpoint"
-~~~
+```
 
 Teste web:
 
-~~~bash
+```bash
 git add order-service/src/test/java/com/orderstock/order/controller
 git commit -m "test(order-service): add health check web tests"
-~~~
+```
 
 Cliente HTTP:
 
-~~~bash
+```bash
 git add order-service/src/main/java/com/orderstock/order
 git commit -m "feat(order-service): add inventory HTTP client"
-~~~
+```
 
 Testes do cliente:
 
-~~~bash
+```bash
 git add order-service/src/test/java/com/orderstock/order/client
 git commit -m "test(order-service): add inventory client unit tests"
-~~~
+```
 
 Documentação:
 
-~~~bash
+```bash
 git add order-service/README.md README.md
 git commit -m "docs(order-service): document integration and execution"
-~~~
+```
 
 ## 15.2 Significado dos prefixos
 
@@ -1657,11 +1657,11 @@ git commit -m "docs(order-service): document integration and execution"
 
 ## 15.3 História de usuário
 
-~~~text
+```text
 Como sistema de pedidos,
 quero verificar a disponibilidade do serviço de estoque,
 para identificar se posso continuar o processamento de uma operação.
-~~~
+```
 
 ## 15.4 Critérios de aceite
 
@@ -1681,7 +1681,7 @@ para identificar se posso continuar o processamento de uma operação.
 
 ## 15.5 Exemplo para uma daily meeting
 
-~~~text
+```text
 Ontem criei a estrutura inicial do order-service e implementei o health check local.
 
 Hoje implementei o cliente HTTP utilizando RestClient, configurei timeout e adicionei o endpoint que verifica o health check do inventory-service.
@@ -1689,7 +1689,7 @@ Hoje implementei o cliente HTTP utilizando RestClient, configurei timeout e adic
 A principal decisão foi manter a integração síncrona e simples, sem introduzir Spring Cloud ou circuit breaker nesta etapa.
 
 Como risco, o order-service possui dependência temporal do inventory-service, mas a indisponibilidade já é tratada com HTTP 503.
-~~~
+```
 
 ## 15.6 Como explicar uma dificuldade técnica
 
@@ -1703,7 +1703,7 @@ Utilize:
 
 Exemplo:
 
-~~~text
+```text
 Durante a configuração do cliente HTTP, precisei definir timeout de conexão e leitura.
 
 O problema era evitar que o order-service aguardasse indefinidamente o inventory-service.
@@ -1711,7 +1711,7 @@ O problema era evitar que o order-service aguardasse indefinidamente o inventory
 Analisei a configuração do RestClient e utilizei SimpleClientHttpRequestFactory.
 
 Como resultado, a chamada passou a possuir limites explícitos e os testes de falha foram adicionados.
-~~~
+```
 
 ---
 
@@ -1719,27 +1719,27 @@ Como resultado, a chamada passou a possuir limites explícitos e os testes de fa
 
 ## 16.1 Verificar Java
 
-~~~bash
+```bash
 java -version
-~~~
+```
 
 Resultado esperado:
 
-~~~text
+```text
 java version "17.x.x"
-~~~
+```
 
 ## 16.2 Verificar Maven
 
-~~~bash
+```bash
 mvn -version
-~~~
+```
 
 Procure uma saída semelhante a:
 
-~~~text
+```text
 Java version: 17.x.x
-~~~
+```
 
 É importante verificar o Java utilizado pelo Maven, pois ele pode ser diferente do Java utilizado pelo comando `java`.
 
@@ -1747,76 +1747,76 @@ Java version: 17.x.x
 
 Terminal 1:
 
-~~~bash
+```bash
 cd inventory-service
 mvn spring-boot:run
-~~~
+```
 
 ## 16.4 Iniciar o `order-service`
 
 Terminal 2:
 
-~~~bash
+```bash
 cd order-service
 mvn spring-boot:run
-~~~
+```
 
 ## 16.5 Executar os testes
 
-~~~bash
+```bash
 cd order-service
 mvn clean test
-~~~
+```
 
 ## 16.6 Testar o `inventory-service`
 
-~~~bash
+```bash
 curl -i http://localhost:8081/api/inventory/health
-~~~
+```
 
 ## 16.7 Testar o health check local do `order-service`
 
-~~~bash
+```bash
 curl -i http://localhost:8082/api/orders/health
-~~~
+```
 
 ## 16.8 Testar a dependência
 
-~~~bash
+```bash
 curl -i http://localhost:8082/api/orders/dependencies/inventory/health
-~~~
+```
 
 ## 16.9 Confirmar o `release 17`
 
 Execute:
 
-~~~bash
+```bash
 mvn clean compile
-~~~
+```
 
 Também é possível verificar o POM efetivo:
 
-~~~bash
+```bash
 mvn help:effective-pom
-~~~
+```
 
 Procure por:
 
-~~~xml
+```xml
 <release>17</release>
-~~~
+```
 
 No Linux ou macOS:
 
-~~~bash
+```bash
 grep -R "release" target/maven-status
-~~~
+```
 
 No Windows PowerShell:
 
-~~~powershell
+```powershell
 mvn help:effective-pom | Select-String "release"
-~~~
+```
 
 A confirmação mais importante é que:
 
@@ -1831,81 +1831,81 @@ A confirmação mais importante é que:
 
 ## 17.1 Os dois serviços em execução
 
-~~~bash
+```bash
 curl -i http://localhost:8081/api/inventory/health
-~~~
+```
 
 Resultado:
 
-~~~http
+```http
 HTTP/1.1 200 OK
-~~~
+```
 
-~~~bash
+```bash
 curl -i http://localhost:8082/api/orders/health
-~~~
+```
 
 Resultado:
 
-~~~http
+```http
 HTTP/1.1 200 OK
-~~~
+```
 
-~~~bash
+```bash
 curl -i http://localhost:8082/api/orders/dependencies/inventory/health
-~~~
+```
 
 Resultado:
 
-~~~http
+```http
 HTTP/1.1 200 OK
-~~~
+```
 
 Resposta:
 
-~~~json
+```json
 {
   "dependency": "inventory-service",
   "status": "UP",
   "message": null
 }
-~~~
+```
 
 ## 17.2 Somente o `order-service` em execução
 
-~~~bash
+```bash
 curl -i http://localhost:8082/api/orders/dependencies/inventory/health
-~~~
+```
 
 Resultado:
 
-~~~http
+```http
 HTTP/1.1 503 Service Unavailable
-~~~
+```
 
 Resposta:
 
-~~~json
+```json
 {
   "dependency": "inventory-service",
   "status": "DOWN",
   "message": "Inventory service is unavailable"
 }
-~~~
+```
 
 O health check local do `order-service` ainda poderá retornar `200`, porque o próprio processo está ativo.
 
 ## 17.3 Somente o `inventory-service` em execução
 
-~~~bash
+```bash
 curl -i http://localhost:8081/api/inventory/health
-~~~
+```
 
 Resultado:
 
-~~~http
+```http
 HTTP/1.1 200 OK
-~~~
+```
 
 O endpoint do `order-service` não responderá, pois ele não está em execução.
 
@@ -1913,17 +1913,17 @@ O endpoint do `order-service` não responderá, pois ele não está em execuçã
 
 As chamadas resultarão em erro de conexão, normalmente:
 
-~~~text
+```text
 Connection refused
-~~~
+```
 
 ## 17.5 Porta ocupada
 
 Erro típico:
 
-~~~text
+```text
 Web server failed to start. Port 8082 was already in use.
-~~~
+```
 
 Soluções:
 
@@ -1935,9 +1935,9 @@ Soluções:
 
 Se a configuração estiver assim:
 
-~~~properties
+```properties
 inventory-service.base-url=http://localhost:9999
-~~~
+```
 
 A chamada deverá falhar controladamente e o endpoint deverá retornar `503`.
 
@@ -2016,18 +2016,18 @@ Criar uma segunda operação no `inventory-service` e fazer o `order-service` co
 
 1. Criar no `inventory-service` o endpoint:
 
-~~~http
+```http
 GET /api/inventory/products/availability
-~~~
+```
 
 2. Retornar um DTO semelhante a:
 
-~~~json
+```json
 {
   "productId": "product-1",
   "available": true
 }
-~~~
+```
 
 3. Criar no `order-service`:
 
@@ -2076,22 +2076,22 @@ Spring Boot 3 exige Java 17 ou superior.
 
 Erros possíveis:
 
-~~~text
+```text
 Unsupported class file major version
-~~~
+```
 
 ou:
 
-~~~text
+```text
 Spring Boot requires Java 17
-~~~
+```
 
 Verifique:
 
-~~~bash
+```bash
 java -version
 mvn -version
-~~~
+```
 
 ## 21.2 Maven utilizando outro JDK
 
@@ -2101,23 +2101,23 @@ Nesse caso, verifique e ajuste `JAVA_HOME`.
 
 Linux ou macOS:
 
-~~~bash
+```bash
 echo $JAVA_HOME
-~~~
+```
 
 Windows PowerShell:
 
-~~~powershell
+```powershell
 $env:JAVA_HOME
-~~~
+```
 
 ## 21.3 Porta ocupada
 
 Erro típico:
 
-~~~text
+```text
 Port 8082 was already in use
-~~~
+```
 
 Verifique os processos ativos ou altere temporariamente a porta.
 
@@ -2131,9 +2131,9 @@ Já o endpoint de dependência deverá responder `503`.
 
 Verifique:
 
-~~~properties
+```properties
 inventory-service.base-url=http://localhost:8081
-~~~
+```
 
 ## 21.6 `localhost` em Docker
 
@@ -2143,15 +2143,15 @@ Dentro de um container, `localhost` representa o próprio container, não necess
 
 Em Spring Boot 3, utilize APIs Jakarta quando necessário:
 
-~~~java
+```java
 import jakarta.servlet.*;
-~~~
+```
 
 Não utilize:
 
-~~~java
+```java
 import javax.servlet.*;
-~~~
+```
 
 Nesta etapa específica, nenhum import Jakarta é necessário diretamente.
 
@@ -2211,7 +2211,7 @@ Uma resposta HTTP sem corpo não deve ser aceita silenciosamente. O cliente tran
 
 ## Arquivos criados ou alterados
 
-~~~text
+```text
 order-service/
 ├── pom.xml
 ├── README.md
@@ -2232,13 +2232,13 @@ order-service/
         └── java/com/orderstock/order/
             ├── client/InventoryClientTest.java
             └── controller/HealthControllerTest.java
-~~~
+```
 
 Também poderá ser criado ou alterado:
 
-~~~text
+```text
 README.md
-~~~
+```
 
 na raiz do monorepo.
 
@@ -2261,23 +2261,23 @@ na raiz do monorepo.
 
 ### `inventory-service`
 
-~~~http
+```http
 GET http://localhost:8081/api/inventory/health
-~~~
+```
 
 ### `order-service`
 
-~~~http
+```http
 GET http://localhost:8082/api/orders/health
-~~~
+```
 
-~~~http
+```http
 GET http://localhost:8082/api/orders/dependencies/inventory/health
-~~~
+```
 
 ## Fluxo de comunicação
 
-~~~mermaid
+```mermaid
 sequenceDiagram
     participant Client as Cliente
     participant Order as order-service
@@ -2293,7 +2293,7 @@ sequenceDiagram
         Inventory--xOrder: Timeout ou conexão recusada
         Order-->>Client: 503 + status DOWN
     end
-~~~
+```
 
 ## Cliente HTTP escolhido e justificativa
 
@@ -2307,11 +2307,11 @@ Foi escolhido o `RestClient` porque:
 
 ## Configuração externa criada
 
-~~~properties
+```properties
 inventory-service.base-url=http://localhost:8081
 inventory-service.timeout.connect=2s
 inventory-service.timeout.read=3s
-~~~
+```
 
 ## Tratamento de erros implementado
 
@@ -2342,27 +2342,27 @@ Foram tratados:
 
 ## Comandos que devem funcionar
 
-~~~bash
+```bash
 cd inventory-service
 mvn clean test
 mvn spring-boot:run
-~~~
+```
 
 Em outro terminal:
 
-~~~bash
+```bash
 cd order-service
 mvn clean test
 mvn spring-boot:run
-~~~
+```
 
 Validação:
 
-~~~bash
+```bash
 curl -i http://localhost:8081/api/inventory/health
 curl -i http://localhost:8082/api/orders/health
 curl -i http://localhost:8082/api/orders/dependencies/inventory/health
-~~~
+```
 
 ## Problemas encontrados
 
@@ -2394,14 +2394,14 @@ Preencher após a execução:
 
 Sugestões:
 
-~~~text
+```text
 feat(order-service): create initial Spring Boot service
 feat(order-service): add local health check endpoint
 test(order-service): add health check web tests
 feat(order-service): add inventory HTTP client
 test(order-service): add inventory client unit tests
 docs(order-service): document integration and execution
-~~~
+```
 
 ## Conceitos para revisar
 
