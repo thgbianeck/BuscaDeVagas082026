@@ -555,16 +555,16 @@ git commit -m "feat(inventory-service): health check endpoint with Spring Boot 3
 
 ## 33. Checklist de validação
 
-- [ ] `java -version` indica Java 17;
-- [ ] `mvn -version` indica que o Maven usa Java 17;
-- [ ] `mvn test` executa sem erros;
-- [ ] `mvn spring-boot:run` inicia a aplicação sem erros;
-- [ ] `GET /api/inventory/health` responde HTTP 200;
-- [ ] A resposta é um JSON válido com os campos `service` e `status`;
-- [ ] Nenhum import `javax.*` presente no código;
-- [ ] Existe pelo menos um commit Git no repositório;
-- [ ] Você consegue explicar a finalidade de cada arquivo criado;
-- [ ] Você consegue explicar por que escolhemos Spring Boot 3.x para Java 17.
+- [x] `java -version` indica Java 17;
+- [x] `mvn -version` indica que o Maven usa Java 17;
+- [x] `mvn test` executa sem erros;
+- [x] `mvn spring-boot:run` inicia a aplicação sem erros;
+- [x] `GET /api/inventory/health` responde HTTP 200;
+- [x] A resposta é um JSON válido com os campos `service` e `status`;
+- [x] Nenhum import `javax.*` presente no código;
+- [x] Existe pelo menos um commit Git no repositório;
+- [x] Você consegue explicar a finalidade de cada arquivo criado;
+- [x] Você consegue explicar por que escolhemos Spring Boot 3.x para Java 17.
 
 ## CONTEXTO-PARA-PRÓXIMA-ETAPA
 
