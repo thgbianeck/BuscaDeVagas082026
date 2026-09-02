@@ -230,3 +230,6 @@ Mantenha uma linguagem profissional, clara, didática e objetiva.
 Não omita a resposta esperada, a explicação, os critérios de avaliação ou a orientação sobre como o candidato deve responder.
 
 Se a quantidade de perguntas for muito grande para uma única resposta, divida o conteúdo em partes numeradas, mantendo a sequência e a estrutura definida. Ao final de cada parte, informe quais perguntas foram apresentadas e quais ainda faltam.
+
+Gere oresultado, use mermaid para exemplificar os fluxos e diagramas e Mostre o resultado dentro de um bloco de código markdown.
+- dentro desse bloco markdown escape qualquer bloco desta forma: ~~~ .
