@@ -1,0 +1,96 @@
+name: ${COMPOSE_PROJECT_NAME:-interbank-lab}
+services:
+  postgres:
+    image: postgres:${POSTGRES_VERSION:-16.4}
+    profiles: [core]
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-interbank}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-interbank_local_only}
+      POSTGRES_DB: ${POSTGRES_DB:-interbank_admin}
+    ports: ["5432:5432"]
+    volumes: [postgres-data:/var/lib/postgresql/data, ./infrastructure/postgres/init:/docker-entrypoint-initdb.d:ro]
+    networks: [backend]
+    healthcheck: {test: [CMD-SHELL, "pg_isready -U ${POSTGRES_USER:-interbank} -d ${POSTGRES_DB:-interbank_admin}"], interval: 5s, timeout: 5s, retries: 10}
+  mongodb:
+    image: mongo:${MONGODB_VERSION:-8.0}
+    profiles: [core]
+    ports: ["27017:27017"]
+    volumes: [mongo-data:/data/db]
+    networks: [backend]
+    healthcheck: {test: [CMD-SHELL, "mongosh --quiet --eval 'db.runCommand({ ping: 1 }).ok' localhost:27017/test | grep 1"], interval: 10s, timeout: 5s, retries: 10}
+  kafka:
+    image: apache/kafka:${KAFKA_VERSION:-3.9.0}
+    profiles: [core]
+    ports: ["9092:9092"]
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
+    volumes: [kafka-data:/var/lib/kafka/data]
+    networks: [backend]
+    healthcheck: {test: [CMD-SHELL, "bash -c 'echo > /dev/tcp/127.0.0.1/9092'"], interval: 10s, timeout: 5s, retries: 12}
+  kafka-ui:
+    image: provectuslabs/kafka-ui:v0.7.2
+    profiles: [tools]
+    depends_on: {kafka: {condition: service_healthy}}
+    environment: {KAFKA_CLUSTERS_0_NAME: local, KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092}
+    ports: ["8085:8080"]
+    networks: [backend]
+  keycloak:
+    image: quay.io/keycloak/keycloak:${KEYCLOAK_VERSION:-26.0}
+    profiles: [core]
+    command: start-dev --http-port=8080
+    environment: {KC_BOOTSTRAP_ADMIN_USERNAME: ${KEYCLOAK_ADMIN:-admin}, KC_BOOTSTRAP_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:-admin_local_only}}
+    ports: ["8080:8080"]
+    volumes: [keycloak-data:/opt/keycloak/data]
+    networks: [backend]
+    healthcheck: {test: [CMD-SHELL, "exec 3<>/dev/tcp/127.0.0.1/8080"], interval: 15s, timeout: 5s, retries: 20}
+  localstack:
+    build:
+      context: ./infrastructure/localstack
+    image: interbank-lab/localstack:${LOCALSTACK_VERSION:-4.0}
+    profiles: [cloud]
+    environment: {SERVICES: sqs,sns,s3,dynamodb,eventbridge,secretsmanager,DEBUG: "0", AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-us-east-1}}
+    ports: ["4566:4566"]
+    volumes: [localstack-data:/var/lib/localstack, /var/run/docker.sock:/var/run/docker.sock, ./infrastructure/localstack/init:/etc/localstack/init/ready.d:ro]
+    networks: [backend]
+    healthcheck: {test: [CMD-SHELL, "curl -fsS http://localhost:4566/_localstack/health >/dev/null"], interval: 10s, timeout: 5s, retries: 20}
+  mailpit:
+    image: axllent/mailpit:${MAILPIT_VERSION:-v1.21.8}
+    profiles: [tools]
+    ports: ["1025:1025", "8025:8025"]
+    networks: [backend]
+  prometheus:
+    image: prom/prometheus:v3.0.1
+    profiles: [observability]
+    ports: ["9090:9090"]
+    volumes: [./infrastructure/observability/prometheus.yml:/etc/prometheus/prometheus.yml:ro]
+    networks: [backend]
+  grafana:
+    image: grafana/grafana:11.4.0
+    profiles: [observability]
+    ports: ["3000:3000"]
+    volumes: [grafana-data:/var/lib/grafana]
+    networks: [backend]
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.115.1
+    profiles: [observability]
+    command: ["--config=/etc/otelcol-contrib/config.yaml"]
+    ports: ["4319:4317", "4320:4318"]
+    volumes: [./infrastructure/observability/otel-collector.yml:/etc/otelcol-contrib/config.yaml:ro]
+    networks: [backend]
+  jaeger:
+    image: jaegertracing/all-in-one:1.64
+    profiles: [observability]
+    ports: ["16686:16686", "4317:4317", "4318:4318"]
+    networks: [backend]
+volumes: {postgres-data: {}, mongo-data: {}, kafka-data: {}, keycloak-data: {}, localstack-data: {}, grafana-data: {}}
+networks: {backend: {driver: bridge}}
